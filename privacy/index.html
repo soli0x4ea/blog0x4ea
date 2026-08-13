@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PuffComic 隐私政策 · 0x4ea</title>
+  <meta name="description" content="PuffComic 隐私政策：纯本地离线漫画与电子书阅读器，不收集任何个人数据。" />
+  <style>
+    :root { --blue:#0066cc; --ink:#1d1d1f; --muted:#6e6e73; --line:#e5e5ea; --bg:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; }
+    .wrap { max-width:760px; margin:0 auto; padding:44px 24px 80px; }
+    header.top { border-bottom:1px solid var(--line); padding-bottom:18px; margin-bottom:28px; }
+    .brand { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--blue); text-decoration:none; font-size:16px; }
+    .brand .mark { width:22px; height:22px; border-radius:6px; background:var(--blue); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
+    h1 { font-size:30px; margin:22px 0 6px; letter-spacing:-0.02em; }
+    .meta { color:var(--muted); font-size:14px; margin-bottom:28px; }
+    h2 { font-size:20px; margin:34px 0 10px; letter-spacing:-0.01em; }
+    p { margin:12px 0; }
+    ul { padding-left:22px; }
+    li { margin:6px 0; }
+    .warn { background:#fff8e6; border:1px solid #ffe08a; border-radius:10px; padding:14px 16px; font-size:14px; color:#7a5b00; margin:20px 0; }
+    a { color:var(--blue); }
+    code { background:#f2f2f7; padding:1px 6px; border-radius:5px; font-size:13px; }
+    footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="../"><span class="mark">0x</span><span>0x4ea</span></a>
+    </header>
+
+    <h1>PuffComic 隐私政策</h1>
+    <div class="meta">生效日期：2026-08-13</div>
+
+    <p>PuffComic（以下简称「本应用」）是一款纯本地的 iOS 漫画与电子书阅读器。本政策说明我们如何对待您的信息。</p>
+
+    <h2>1. 我们收集什么</h2>
+    <p><strong>我们不收集任何个人数据。</strong></p>
+    <p>本应用完全离线运行，不发起任何网络连接，不依赖任何后端服务器，也不要求您注册账号。您导入的书籍、阅读进度、书签、PIN 码等均仅存储在您设备自身的本地存储（沙盒 / 钥匙串）中，不会以任何形式上传或传输给开发者或任何第三方。</p>
+
+    <h2>2. 我们如何使用信息</h2>
+    <p>由于不收集任何信息，我们没有任何数据可供使用、分析或共享。</p>
+
+    <h2>3. 第三方组件</h2>
+    <p>本应用内置以下开源库，均仅在您设备本地运行，用于文件解析与存储，不与任何服务器通信：</p>
+    <ul>
+      <li><strong>GRDB</strong>（SQLite 持久化，MIT）</li>
+      <li><strong>ZIPFoundation</strong>（ZIP 解包，MIT）</li>
+      <li><strong>UnrarKit</strong>（RAR 解包，MIT）</li>
+      <li><strong>libmobi</strong>（MOBI/AZW3 解析，LGPL-3.0，以可分离动态框架 MobiKit 打包）</li>
+    </ul>
+    <p>这些组件不会收集或向外发送您的数据。</p>
+
+    <h2>4. 儿童隐私</h2>
+    <p>本应用不面向儿童收集任何信息（事实上不收集任何信息）。</p>
+
+    <h2>5. 您的权利</h2>
+    <p>您对本地数据的全部控制权始终在您手中：卸载本应用即彻底删除其存储的所有本地数据。</p>
+
+    <h2>6. 联系方式</h2>
+    <div class="warn">
+      ⚠️ 以下邮箱为占位符（<code>puffcomic@example.com</code>），<strong>尚未替换为真实邮箱</strong>。正式提交 App Store 审核前，请将本页的邮箱替换为可接收隐私问询的真实邮箱，否则隐私政策可能被视为无效。
+    </div>
+    <p>如有任何隐私相关问题，请联系：puffcomic@example.com</p>
+
+    <footer>
+      <p>本政策对应 App Store Connect 隐私营养标签：「数据未收集（We don't collect any data from this app.）」</p>
+      <p><a href="../">← 返回 0x4ea 项目集</a></p>
+    </footer>
+  </div>
+</body>
+</html>
