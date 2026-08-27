@@ -20,9 +20,9 @@
         <span class="nav__brand">0x4ea</span>
       </a>
       <nav class="nav__links" aria-label="主导航">
-        <a href="#projects">项目</a>
         <a href="#download">下载</a>
         <a href="#about">关于</a>
+        <a href="#projects">项目</a>
         <a href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
       <div class="nav__actions">
@@ -36,9 +36,9 @@
       </div>
     </div>
     <nav class="nav__mobile" id="mobileMenu" aria-label="移动端导航" hidden>
-      <a href="#projects">项目</a>
       <a href="#download">下载</a>
       <a href="#about">关于</a>
+      <a href="#projects">项目</a>
       <a href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </header>
@@ -63,7 +63,72 @@
       </div>
     </section>
 
-    <!-- ===== Bento Grid ===== -->
+    <!-- ===== Download ===== -->
+    <section class="section download" id="download" aria-labelledby="download-title">
+      <div class="section__head">
+        <h2 class="section__title reveal" id="download-title">下载</h2>
+      </div>
+      <div class="download__grid">
+        <div class="dl-card reveal" style="--i:0">
+          <div class="dl-card__icon">
+            <img src="images/puffcomicicon.jpg" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
+          </div>
+          <div class="dl-card__body">
+            <p class="dl-card__title">PuffComic</p>
+            <p class="dl-card__meta">Android · v1.0 · APK</p>
+          </div>
+          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/PuffComic-v1.0-release.apk" target="_blank" rel="noopener noreferrer" download>下载 APK ↓</a>
+        </div>
+
+        <div class="dl-card reveal" style="--i:1">
+          <div class="dl-card__icon">
+            <img src="images/puffcomicicon.jpg" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
+          </div>
+          <div class="dl-card__body">
+            <p class="dl-card__title">PuffComic</p>
+            <p class="dl-card__meta">iOS · App Store</p>
+          </div>
+          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/puffcomic/id6800779811?uo=4" target="_blank" rel="noopener noreferrer">App Store 下载 ↓</a>
+        </div>
+
+        <div class="dl-card reveal" style="--i:2">
+          <div class="dl-card__icon">
+            <img src="images/new_icon.png" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
+          </div>
+          <div class="dl-card__body">
+            <p class="dl-card__title">系统宝石学笔记</p>
+            <p class="dl-card__meta">Android · v1.0.6 · APK</p>
+          </div>
+          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/gemology-notes-v1.0.6.apk" target="_blank" rel="noopener noreferrer" download>下载 APK ↓</a>
+        </div>
+
+        <div class="dl-card reveal" style="--i:3">
+          <div class="dl-card__icon">
+            <img src="images/new_icon.png" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
+          </div>
+          <div class="dl-card__body">
+            <p class="dl-card__title">系统宝石学笔记</p>
+            <p class="dl-card__meta">iOS · App Store</p>
+          </div>
+          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/%E7%B3%BB%E7%BB%9F%E5%AE%9D%E7%9F%B3%E5%AD%A6%E7%AC%94%E8%AE%B0/id6797660418?uo=4" target="_blank" rel="noopener noreferrer">App Store 下载 ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="about__inner">
+        <p class="eyebrow reveal">关于 0x4ea</p>
+        <h2 class="about__title reveal" id="about-title">一个不断探索 AI 边界的开发者、交易员、珠宝鉴定师。</h2>
+        <div class="about__links reveal">
+          <a class="link" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+        <p class="about__contact reveal">联系我 ↓</p>
+        <p class="about__email reveal">issue@0x4ea.com</p>
+      </div>
+    </section>
+
+    <!-- ===== Projects (moved to bottom, below contact) ===== -->
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section__head">
         <h2 class="section__title reveal" id="projects-title">项目</h2>
@@ -141,71 +206,6 @@
             <ul class="tags"><li>TypeScript</li><li>DSH 插件</li><li>MIT</li></ul>
           </div>
         </a>
-      </div>
-    </section>
-
-    <!-- ===== Download ===== -->
-    <section class="section download" id="download" aria-labelledby="download-title">
-      <div class="section__head">
-        <h2 class="section__title reveal" id="download-title">下载</h2>
-      </div>
-      <div class="download__grid">
-        <div class="dl-card reveal" style="--i:0">
-          <div class="dl-card__icon">
-            <img src="images/puffcomicicon.jpg" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
-          </div>
-          <div class="dl-card__body">
-            <p class="dl-card__title">PuffComic</p>
-            <p class="dl-card__meta">Android · v1.0 · APK</p>
-          </div>
-          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/PuffComic-v1.0-release.apk" target="_blank" rel="noopener noreferrer" download>下载 APK ↓</a>
-        </div>
-
-        <div class="dl-card reveal" style="--i:1">
-          <div class="dl-card__icon">
-            <img src="images/puffcomicicon.jpg" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
-          </div>
-          <div class="dl-card__body">
-            <p class="dl-card__title">PuffComic</p>
-            <p class="dl-card__meta">iOS · TestFlight 公开测试</p>
-          </div>
-          <a class="btn btn--primary dl-card__btn" href="https://testflight.apple.com/join/H4bB38HK" target="_blank" rel="noopener noreferrer">加入 TestFlight ↓</a>
-        </div>
-
-        <div class="dl-card reveal" style="--i:2">
-          <div class="dl-card__icon">
-            <img src="images/new_icon.png" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
-          </div>
-          <div class="dl-card__body">
-            <p class="dl-card__title">系统宝石学笔记</p>
-            <p class="dl-card__meta">Android · v1.0.6 · APK</p>
-          </div>
-          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/gemology-notes-v1.0.6.apk" target="_blank" rel="noopener noreferrer" download>下载 APK ↓</a>
-        </div>
-
-        <div class="dl-card reveal" style="--i:3">
-          <div class="dl-card__icon">
-            <img src="images/new_icon.png" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
-          </div>
-          <div class="dl-card__body">
-            <p class="dl-card__title">系统宝石学笔记</p>
-            <p class="dl-card__meta">iOS · App Store</p>
-          </div>
-          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/%E7%B3%BB%E7%BB%9F%E5%AE%9D%E7%9F%B3%E5%AD%A6%E7%AC%94%E8%AE%B0/id6797660418?uo=4" target="_blank" rel="noopener noreferrer">App Store 下载 ↓</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== About ===== -->
-    <section class="section about" id="about" aria-labelledby="about-title">
-      <div class="about__inner">
-        <p class="eyebrow reveal">关于 0x4ea</p>
-        <h2 class="about__title reveal" id="about-title">一个不断探索 AI 边界的开发者、交易员、珠宝鉴定师。</h2>
-        <div class="about__links reveal">
-          <a class="link" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        </div>
-        <p class="about__contact reveal">联系我 ↓</p>
-        <p class="about__email reveal">issue@0x4ea.com</p>
       </div>
     </section>
   </main>
