@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="light" data-lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,30 +15,34 @@
   <!-- ===== Navigation ===== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a class="nav__logo" href="#top" aria-label="0x4ea 首页">
+      <a class="nav__logo" href="#top" data-i18n-aria="nav.logoAria" aria-label="0x4ea 首页">
         <span class="nav__mark" aria-hidden="true"></span>
         <span class="nav__brand">0x4ea</span>
       </a>
       <nav class="nav__links" aria-label="主导航">
-        <a href="#download">下载</a>
-        <a href="#about">关于</a>
-        <a href="#projects">项目</a>
+        <a href="#download" data-i18n="nav.download">下载</a>
+        <a href="#about" data-i18n="nav.about">关于</a>
+        <a href="#projects" data-i18n="nav.projects">项目</a>
         <a href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
       <div class="nav__actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换深色 / 浅色模式" aria-pressed="false">
+        <button class="theme-toggle" id="themeToggle" type="button" data-i18n-aria="nav.themeAria" aria-label="切换深色 / 浅色模式" aria-pressed="false">
           <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
         </button>
-        <button class="nav__menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false">
+        <button class="lang-toggle" id="langToggle" type="button" data-lang-target="en" data-i18n-aria="nav.langAria" aria-label="切换语言 / Switch language" title="切换语言（English）">
+          <svg class="lang-toggle__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4c2.2 2.4 3.3 5.4 3.3 8.6S14.2 18.2 12 20.6c-2.2-2.4-3.3-5.4-3.3-8.6S9.8 5.8 12 3.4Z"/></svg>
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="nav__menu-btn" id="menuBtn" type="button" data-i18n-aria="nav.menuAria" aria-label="打开菜单" aria-expanded="false">
           <span></span><span></span>
         </button>
       </div>
     </div>
     <nav class="nav__mobile" id="mobileMenu" aria-label="移动端导航" hidden>
-      <a href="#download">下载</a>
-      <a href="#about">关于</a>
-      <a href="#projects">项目</a>
+      <a href="#download" data-i18n="nav.download">下载</a>
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="#projects" data-i18n="nav.projects">项目</a>
       <a href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </header>
@@ -52,13 +56,13 @@
       <div class="hero__inner">
         <h1 class="hero__brand-line reveal" id="hero-brand">0x4ea</h1>
         <div class="hero__cta reveal">
-          <a class="btn btn--primary" href="#projects">浏览项目</a>
+          <a class="btn btn--primary" href="#projects" data-i18n="hero.ctaProjects">浏览项目</a>
           <a class="btn btn--ghost" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
         <ul class="hero__stats reveal" aria-label="概览数据">
-          <li><strong>7+</strong><span>在维护项目</span></li>
-          <li><strong>2</strong><span>开源框架</span></li>
-          <li><strong>100%</strong><span>离线优先</span></li>
+          <li><strong>7+</strong><span data-i18n="hero.stat1">在维护项目</span></li>
+          <li><strong>2</strong><span data-i18n="hero.stat2">开源框架</span></li>
+          <li><strong>100%</strong><span data-i18n="hero.stat3">离线优先</span></li>
         </ul>
       </div>
     </section>
@@ -66,51 +70,51 @@
     <!-- ===== Download ===== -->
     <section class="section download" id="download" aria-labelledby="download-title">
       <div class="section__head">
-        <h2 class="section__title reveal" id="download-title">下载</h2>
+        <h2 class="section__title reveal" id="download-title" data-i18n="dl.title">下载</h2>
       </div>
       <div class="download__grid">
         <div class="dl-card reveal" style="--i:0">
           <div class="dl-card__icon">
-            <img src="images/puffcomicicon.jpg" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
+            <img src="images/puffcomicicon.jpg" data-i18n-alt="dl.altPuff" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
           </div>
           <div class="dl-card__body">
             <p class="dl-card__title">PuffComic</p>
-            <p class="dl-card__meta">Android · v1.0 · APK</p>
+            <p class="dl-card__meta" data-i18n="dl.puffAndroid">Android · v1.0 · APK</p>
           </div>
-          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/PuffComic-v1.0-release.apk" target="_blank" rel="noopener noreferrer" download>下载 APK ↓</a>
+          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/PuffComic-v1.0-release.apk" target="_blank" rel="noopener noreferrer" download data-i18n="dl.apk">下载 APK ↓</a>
         </div>
 
         <div class="dl-card reveal" style="--i:1">
           <div class="dl-card__icon">
-            <img src="images/puffcomicicon.jpg" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
+            <img src="images/puffcomicicon.jpg" data-i18n-alt="dl.altPuff" alt="PuffComic 图标" loading="lazy" width="54" height="54" />
           </div>
           <div class="dl-card__body">
             <p class="dl-card__title">PuffComic</p>
-            <p class="dl-card__meta">iOS · App Store</p>
+            <p class="dl-card__meta" data-i18n="dl.puffIos">iOS · App Store</p>
           </div>
-          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/puffcomic/id6800779811?uo=4" target="_blank" rel="noopener noreferrer">App Store 下载 ↓</a>
+          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/puffcomic/id6800779811?uo=4" target="_blank" rel="noopener noreferrer" data-i18n="dl.store">App Store 下载 ↓</a>
         </div>
 
         <div class="dl-card reveal" style="--i:2">
           <div class="dl-card__icon">
-            <img src="images/new_icon.png" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
+            <img src="images/new_icon.png" data-i18n-alt="dl.altGem" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
           </div>
           <div class="dl-card__body">
             <p class="dl-card__title">系统宝石学笔记</p>
-            <p class="dl-card__meta">Android · v1.0.6 · APK</p>
+            <p class="dl-card__meta" data-i18n="dl.gemAndroid">Android · v1.0.6 · APK</p>
           </div>
-          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/gemology-notes-v1.0.6.apk" target="_blank" rel="noopener noreferrer" download>下载 APK ↓</a>
+          <a class="btn btn--primary dl-card__btn" href="https://pub-31d5e2b8506a4abbb1c09e93da4fdd52.r2.dev/gemology-notes-v1.0.6.apk" target="_blank" rel="noopener noreferrer" download data-i18n="dl.apk">下载 APK ↓</a>
         </div>
 
         <div class="dl-card reveal" style="--i:3">
           <div class="dl-card__icon">
-            <img src="images/new_icon.png" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
+            <img src="images/new_icon.png" data-i18n-alt="dl.altGem" alt="系统宝石学笔记 图标" loading="lazy" width="54" height="54" />
           </div>
           <div class="dl-card__body">
             <p class="dl-card__title">系统宝石学笔记</p>
-            <p class="dl-card__meta">iOS · App Store</p>
+            <p class="dl-card__meta" data-i18n="dl.gemIos">iOS · App Store</p>
           </div>
-          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/%E7%B3%BB%E7%BB%9F%E5%AE%9D%E7%9F%B3%E5%AD%A6%E7%AC%94%E8%AE%B0/id6797660418?uo=4" target="_blank" rel="noopener noreferrer">App Store 下载 ↓</a>
+          <a class="btn btn--primary dl-card__btn" href="https://apps.apple.com/cn/app/%E7%B3%BB%E7%BB%9F%E5%AE%9D%E7%9F%B3%E5%AD%A6%E7%AC%94%E8%AE%B0/id6797660418?uo=4" target="_blank" rel="noopener noreferrer" data-i18n="dl.store">App Store 下载 ↓</a>
         </div>
       </div>
     </section>
@@ -118,12 +122,12 @@
     <!-- ===== About ===== -->
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="about__inner">
-        <p class="eyebrow reveal">关于 0x4ea</p>
-        <h2 class="about__title reveal" id="about-title">一个不断探索 AI 边界的开发者、交易员、珠宝鉴定师。</h2>
+        <p class="eyebrow reveal" data-i18n="about.eyebrow">关于 0x4ea</p>
+        <h2 class="about__title reveal" id="about-title" data-i18n="about.title">一个不断探索 AI 边界的开发者、交易员、珠宝鉴定师。</h2>
         <div class="about__links reveal">
-          <a class="link" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="link" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer" data-i18n="about.github">GitHub ↗</a>
         </div>
-        <p class="about__contact reveal">联系我 ↓</p>
+        <p class="about__contact reveal" data-i18n="about.contact">联系我 ↓</p>
         <p class="about__email reveal">issue@0x4ea.com</p>
       </div>
     </section>
@@ -131,12 +135,12 @@
     <!-- ===== Projects (moved to bottom, below contact) ===== -->
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section__head">
-        <h2 class="section__title reveal" id="projects-title">项目</h2>
+        <h2 class="section__title reveal" id="projects-title" data-i18n="pj.title">项目</h2>
       </div>
 
       <div class="bento">
         <!-- 宝石学笔记 -->
-        <a class="card card--lg reveal" style="--i:0" href="https://github.com/soli0x4ea/gemology-notes" target="_blank" rel="noopener noreferrer" aria-label="系统宝石学笔记 GitHub 仓库">
+        <a class="card card--lg reveal" style="--i:0" href="https://github.com/soli0x4ea/gemology-notes" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.gemAria" aria-label="系统宝石学笔记 GitHub 仓库">
           <div class="card__art art--gem" aria-hidden="true">
             <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
               <defs>
@@ -152,15 +156,15 @@
             </svg>
           </div>
           <div class="card__body">
-            <p class="card__eyebrow">移动应用 · 知识库</p>
-            <h3 class="card__title">系统宝石学笔记</h3>
-            <p class="card__desc">46 篇经权威文献交叉验证的宝石学笔记，覆盖 29 种宝石矿物、玉石与有机宝石，以及鉴定仪器与量子光学专题。配套 iOS / Android App 与切工可视化工具。</p>
+            <p class="card__eyebrow" data-i18n="pj.gemEyebrow">移动应用 · 知识库</p>
+            <h3 class="card__title" data-i18n="pj.gemTitle">系统宝石学笔记</h3>
+            <p class="card__desc" data-i18n="pj.gemDesc">46 篇经权威文献交叉验证的宝石学笔记，覆盖 29 种宝石矿物、玉石与有机宝石，以及鉴定仪器与量子光学专题。配套 iOS / Android App 与切工可视化工具。</p>
             <ul class="tags"><li>iOS</li><li>Android</li><li>Swift</li><li>Kotlin</li></ul>
           </div>
         </a>
 
         <!-- PuffComic -->
-        <a class="card card--wide reveal" style="--i:1" href="https://github.com/soli0x4ea/PuffComic" target="_blank" rel="noopener noreferrer" aria-label="PuffComic 离线漫画阅读器 GitHub 仓库">
+        <a class="card card--wide reveal" style="--i:1" href="https://github.com/soli0x4ea/PuffComic" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.comicAria" aria-label="PuffComic 离线漫画阅读器 GitHub 仓库">
           <div class="card__art art--comic" aria-hidden="true">
             <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">
               <rect x="14" y="18" width="135" height="120" rx="8" fill="#fff" opacity="0.92"/>
@@ -174,15 +178,15 @@
             </svg>
           </div>
           <div class="card__body">
-            <p class="card__eyebrow">iOS · Android 阅读器</p>
-            <h3 class="card__title">PuffComic 离线漫画阅读器</h3>
-            <p class="card__desc">真正零网络的离线漫画与电子书阅读器。纯 Swift / TextKit 解析引擎，不依赖 WebKit，打开任何格式都不会弹出无线数据请求。支持 CBZ / EPUB / AZW3 / MD，含隐藏书架与密码保护。</p>
+            <p class="card__eyebrow" data-i18n="pj.comicEyebrow">iOS · Android 阅读器</p>
+            <h3 class="card__title" data-i18n="pj.comicTitle">PuffComic 离线漫画阅读器</h3>
+            <p class="card__desc" data-i18n="pj.comicDesc">真正零网络的离线漫画与电子书阅读器。纯 Swift / TextKit 解析引擎，不依赖 WebKit，打开任何格式都不会弹出无线数据请求。支持 CBZ / EPUB / AZW3 / MD，含隐藏书架与密码保护。</p>
             <ul class="tags"><li>Swift</li><li>SwiftUI</li><li>TextKit</li><li>Kotlin</li></ul>
           </div>
         </a>
 
         <!-- DLC Protocol -->
-        <a class="card card--wide reveal" style="--i:2" href="https://github.com/soli0x4ea/dsh-dlc" target="_blank" rel="noopener noreferrer" aria-label="数字生命卡引擎 dsh-dlc GitHub 仓库">
+        <a class="card card--wide reveal" style="--i:2" href="https://github.com/soli0x4ea/dsh-dlc" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.dlcAria" aria-label="数字生命卡引擎 dsh-dlc GitHub 仓库">
           <div class="card__art art--dlc" aria-hidden="true">
             <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">
               <defs>
@@ -200,9 +204,9 @@
             </svg>
           </div>
           <div class="card__body">
-            <p class="card__eyebrow">开源框架 · TypeScript</p>
-            <h3 class="card__title">数字生命卡引擎 · dsh-dlc</h3>
-            <p class="card__desc">DLC 数字生命卡片协议 × DeepSeek Harness 原生插件，TypeScript 全量重写。状态机引擎、叙事组装、双核线性记忆、可插拔存储，Cordis 插件化直接挂载进 DSH。GitHub 开源，MIT 协议，30 项自动化测试。</p>
+            <p class="card__eyebrow" data-i18n="pj.dlcEyebrow">开源框架 · TypeScript</p>
+            <h3 class="card__title" data-i18n="pj.dlcTitle">数字生命卡引擎 · dsh-dlc</h3>
+            <p class="card__desc" data-i18n="pj.dlcDesc">DLC 数字生命卡片协议 × DeepSeek Harness 原生插件，TypeScript 全量重写。状态机引擎、叙事组装、双核线性记忆、可插拔存储，Cordis 插件化直接挂载进 DSH。GitHub 开源，MIT 协议，30 项自动化测试。</p>
             <ul class="tags"><li>TypeScript</li><li>DSH 插件</li><li>MIT</li></ul>
           </div>
         </a>
@@ -213,12 +217,14 @@
   <footer class="footer">
     <div class="footer__inner">
       <span class="footer__brand">0x4ea</span>
-      <span class="footer__copy">© 2026 0x4ea · 离线优先，隐私优先</span>
+      <span class="footer__copy" data-i18n="ft.copy">© 2026 0x4ea · 离线优先，隐私优先</span>
       <a class="footer__link" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
   </footer>
 
   <script src="js/hero-scene.js"></script>
+  <script src="js/i18n-core.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

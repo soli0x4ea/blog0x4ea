@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
     * { box-sizing: border-box; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; }
     .wrap { max-width:760px; margin:0 auto; padding:44px 24px 80px; }
-    header.top { border-bottom:1px solid var(--line); padding-bottom:18px; margin-bottom:28px; }
+    header.top { border-bottom:1px solid var(--line); padding-bottom:18px; margin-bottom:28px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .brand { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--blue); text-decoration:none; font-size:16px; }
     .brand .mark { width:22px; height:22px; border-radius:6px; background:var(--blue); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
     h1 { font-size:30px; margin:22px 0 6px; letter-spacing:-0.02em; }
@@ -23,49 +23,152 @@
     a { color:var(--blue); }
     code { background:#f2f2f7; padding:1px 6px; border-radius:5px; font-size:13px; }
     footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+
+    /* Language toggle — same visual language as the homepage */
+    .lang-toggle {
+      height: 32px; min-width: 32px; padding: 0 10px; border-radius: 980px;
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+      font-family: inherit; font-size: 12.5px; font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .lang-toggle:hover { background: #f2f2f7; }
+    .lang-toggle:active { transform: scale(0.94); }
+    .lang-toggle__globe { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; flex: 0 0 auto; }
+    .lang-toggle__label { line-height: 1; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="top">
       <a class="brand" href="../"><span class="mark">0x</span><span>0x4ea</span></a>
+      <button class="lang-toggle" id="langToggle" type="button" data-lang-target="en" aria-label="切换语言 / Switch language" title="切换语言（English）">
+        <svg class="lang-toggle__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4c2.2 2.4 3.3 5.4 3.3 8.6S14.2 18.2 12 20.6c-2.2-2.4-3.3-5.4-3.3-8.6S9.8 5.8 12 3.4Z"/></svg>
+        <span class="lang-toggle__label">EN</span>
+      </button>
     </header>
 
-    <h1>PuffComic 隐私政策</h1>
-    <div class="meta">生效日期：2026-08-13</div>
+    <h1 data-i18n="pv.title">PuffComic 隐私政策</h1>
+    <div class="meta" data-i18n="pv.effective">生效日期：2026-08-13</div>
 
-    <p>PuffComic（以下简称「本应用」）是一款纯本地的 iOS 漫画与电子书阅读器。本政策说明我们如何对待您的信息。</p>
+    <p data-i18n="pv.intro">PuffComic（以下简称「本应用」）是一款纯本地的 iOS 漫画与电子书阅读器。本政策说明我们如何对待您的信息。</p>
 
-    <h2>1. 我们收集什么</h2>
-    <p><strong>我们不收集任何个人数据。</strong></p>
-    <p>本应用完全离线运行，不发起任何网络连接，不依赖任何后端服务器，也不要求您注册账号。您导入的书籍、阅读进度、书签、PIN 码等均仅存储在您设备自身的本地存储（沙盒 / 钥匙串）中，不会以任何形式上传或传输给开发者或任何第三方。</p>
+    <h2 data-i18n="pv.h1">1. 我们收集什么</h2>
+    <p data-i18n-html="pv.s1p1"><strong>我们不收集任何个人数据。</strong></p>
+    <p data-i18n="pv.s1p2">本应用完全离线运行，不发起任何网络连接，不依赖任何后端服务器，也不要求您注册账号。您导入的书籍、阅读进度、书签、PIN 码等均仅存储在您设备自身的本地存储（沙盒 / 钥匙串）中，不会以任何形式上传或传输给开发者或任何第三方。</p>
 
-    <h2>2. 我们如何使用信息</h2>
-    <p>由于不收集任何信息，我们没有任何数据可供使用、分析或共享。</p>
+    <h2 data-i18n="pv.h2">2. 我们如何使用信息</h2>
+    <p data-i18n="pv.s2p1">由于不收集任何信息，我们没有任何数据可供使用、分析或共享。</p>
 
-    <h2>3. 第三方组件</h2>
-    <p>本应用内置以下开源库，均仅在您设备本地运行，用于文件解析与存储，不与任何服务器通信：</p>
+    <h2 data-i18n="pv.h3">3. 第三方组件</h2>
+    <p data-i18n="pv.s3p1">本应用内置以下开源库，均仅在您设备本地运行，用于文件解析与存储，不与任何服务器通信：</p>
     <ul>
-      <li><strong>GRDB</strong>（SQLite 持久化，MIT）</li>
-      <li><strong>ZIPFoundation</strong>（ZIP 解包，MIT）</li>
-      <li><strong>UnrarKit</strong>（RAR 解包，MIT）</li>
-      <li><strong>libmobi</strong>（MOBI/AZW3 解析，LGPL-3.0，以可分离动态框架 MobiKit 打包）</li>
+      <li data-i18n="pv.s3l1"><strong>GRDB</strong>（SQLite 持久化，MIT）</li>
+      <li data-i18n="pv.s3l2"><strong>ZIPFoundation</strong>（ZIP 解包，MIT）</li>
+      <li data-i18n="pv.s3l3"><strong>UnrarKit</strong>（RAR 解包，MIT）</li>
+      <li data-i18n="pv.s3l4"><strong>libmobi</strong>（MOBI/AZW3 解析，LGPL-3.0，以可分离动态框架 MobiKit 打包）</li>
     </ul>
-    <p>这些组件不会收集或向外发送您的数据。</p>
+    <p data-i18n="pv.s3p2">这些组件不会收集或向外发送您的数据。</p>
 
-    <h2>4. 儿童隐私</h2>
-    <p>本应用不面向儿童收集任何信息（事实上不收集任何信息）。</p>
+    <h2 data-i18n="pv.h4">4. 儿童隐私</h2>
+    <p data-i18n="pv.s4p1">本应用不面向儿童收集任何信息（事实上不收集任何信息）。</p>
 
-    <h2>5. 您的权利</h2>
-    <p>您对本地数据的全部控制权始终在您手中：卸载本应用即彻底删除其存储的所有本地数据。</p>
+    <h2 data-i18n="pv.h5">5. 您的权利</h2>
+    <p data-i18n="pv.s5p1">您对本地数据的全部控制权始终在您手中：卸载本应用即彻底删除其存储的所有本地数据。</p>
 
-    <h2>6. 联系方式</h2>
-    <p>如有任何隐私相关问题，请联系：issue@0x4ea.com</p>
+    <h2 data-i18n="pv.h6">6. 联系方式</h2>
+    <p data-i18n="pv.s6p1">如有任何隐私相关问题，请联系：issue@0x4ea.com</p>
 
     <footer>
-      <p>本政策对应 App Store Connect 隐私营养标签：「数据未收集（We don't collect any data from this app.）」</p>
-      <p><a href="../">← 返回 0x4ea 项目集</a></p>
+      <p data-i18n="pv.footNote">本政策对应 App Store Connect 隐私营养标签：「数据未收集（We don't collect any data from this app.）」</p>
+      <p data-i18n-html="pv.footBack"><a href="../">← 返回 0x4ea 项目集</a></p>
     </footer>
   </div>
+
+  <script src="../js/i18n-core.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var DICT = {
+        zh: {
+          'doc.title': 'PuffComic 隐私政策 · 0x4ea',
+          'doc.desc': 'PuffComic 隐私政策：纯本地离线漫画与电子书阅读器，不收集任何个人数据。',
+          'nav.langAria': '切换语言 / Switch language',
+          'nav.langTitle': '切换语言（English）',
+
+          'pv.title': 'PuffComic 隐私政策',
+          'pv.effective': '生效日期：2026-08-13',
+          'pv.intro': 'PuffComic（以下简称「本应用」）是一款纯本地的 iOS 漫画与电子书阅读器。本政策说明我们如何对待您的信息。',
+
+          'pv.h1': '1. 我们收集什么',
+          'pv.s1p1': '<strong>我们不收集任何个人数据。</strong>',
+          'pv.s1p2': '本应用完全离线运行，不发起任何网络连接，不依赖任何后端服务器，也不要求您注册账号。您导入的书籍、阅读进度、书签、PIN 码等均仅存储在您设备自身的本地存储（沙盒 / 钥匙串）中，不会以任何形式上传或传输给开发者或任何第三方。',
+
+          'pv.h2': '2. 我们如何使用信息',
+          'pv.s2p1': '由于不收集任何信息，我们没有任何数据可供使用、分析或共享。',
+
+          'pv.h3': '3. 第三方组件',
+          'pv.s3p1': '本应用内置以下开源库，均仅在您设备本地运行，用于文件解析与存储，不与任何服务器通信：',
+          'pv.s3l1': '<strong>GRDB</strong>（SQLite 持久化，MIT）',
+          'pv.s3l2': '<strong>ZIPFoundation</strong>（ZIP 解包，MIT）',
+          'pv.s3l3': '<strong>UnrarKit</strong>（RAR 解包，MIT）',
+          'pv.s3l4': '<strong>libmobi</strong>（MOBI/AZW3 解析，LGPL-3.0，以可分离动态框架 MobiKit 打包）',
+          'pv.s3p2': '这些组件不会收集或向外发送您的数据。',
+
+          'pv.h4': '4. 儿童隐私',
+          'pv.s4p1': '本应用不面向儿童收集任何信息（事实上不收集任何信息）。',
+
+          'pv.h5': '5. 您的权利',
+          'pv.s5p1': '您对本地数据的全部控制权始终在您手中：卸载本应用即彻底删除其存储的所有本地数据。',
+
+          'pv.h6': '6. 联系方式',
+          'pv.s6p1': '如有任何隐私相关问题，请联系：issue@0x4ea.com',
+
+          'pv.footNote': '本政策对应 App Store Connect 隐私营养标签：「数据未收集（We don\'t collect any data from this app.）」',
+          'pv.footBack': '<a href="../">← 返回 0x4ea 项目集</a>'
+        },
+
+        en: {
+          'doc.title': 'PuffComic Privacy Policy · 0x4ea',
+          'doc.desc': 'PuffComic privacy policy: a purely local, offline comic and ebook reader that collects no personal data.',
+          'nav.langAria': '切换语言 / Switch language',
+          'nav.langTitle': 'Switch language (中文)',
+
+          'pv.title': 'PuffComic Privacy Policy',
+          'pv.effective': 'Effective date: 2026-08-13',
+          'pv.intro': 'PuffComic (hereafter “the App”) is a purely local comic and ebook reader. This policy explains how we treat your information.',
+
+          'pv.h1': '1. What we collect',
+          'pv.s1p1': '<strong>We do not collect any personal data.</strong>',
+          'pv.s1p2': 'The App runs entirely offline. It initiates no network connections, depends on no backend server, and requires no account. Books you import, reading progress, bookmarks and your PIN are stored only in your device’s own local storage (sandbox / Keychain), and are never uploaded or transmitted to the developer or any third party in any form.',
+
+          'pv.h2': '2. How we use information',
+          'pv.s2p1': 'Because we collect nothing, there is no data for us to use, analyse or share.',
+
+          'pv.h3': '3. Third-party components',
+          'pv.s3p1': 'The App bundles the following open-source libraries. They run only on your device, for file parsing and storage, and do not communicate with any server:',
+          'pv.s3l1': '<strong>GRDB</strong> (SQLite persistence, MIT)',
+          'pv.s3l2': '<strong>ZIPFoundation</strong> (ZIP extraction, MIT)',
+          'pv.s3l3': '<strong>UnrarKit</strong> (RAR extraction, MIT)',
+          'pv.s3l4': '<strong>libmobi</strong> (MOBI/AZW3 parsing, LGPL-3.0, packaged as the separable dynamic framework MobiKit)',
+          'pv.s3p2': 'These components do not collect or transmit your data.',
+
+          'pv.h4': '4. Children’s privacy',
+          'pv.s4p1': 'The App is not directed at children and collects no information from them (in fact it collects no information at all).',
+
+          'pv.h5': '5. Your rights',
+          'pv.s5p1': 'Full control over your local data stays with you at all times: uninstalling the App permanently deletes all local data it has stored.',
+
+          'pv.h6': '6. Contact',
+          'pv.s6p1': 'For any privacy-related question, contact: issue@0x4ea.com',
+
+          'pv.footNote': 'This policy corresponds to the App Store Connect privacy nutrition label: “We don’t collect any data from this app.”',
+          'pv.footBack': '<a href="../">← Back to 0x4ea projects</a>'
+        }
+      };
+
+      window.i18nCore.init({ dict: DICT, buttonId: 'langToggle' });
+    })();
+  </script>
 </body>
 </html>
