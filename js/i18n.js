@@ -66,6 +66,10 @@
       'pj.dlcEyebrow': '开源框架 · TypeScript',
       'pj.dlcTitle': '数字生命卡引擎 · dsh-dlc',
       'pj.dlcDesc': 'DLC 数字生命卡片协议 × DeepSeek Harness 原生插件，TypeScript 全量重写。状态机引擎、叙事组装、双核线性记忆、可插拔存储，Cordis 插件化直接挂载进 DSH。GitHub 开源，MIT 协议，30 项自动化测试。',
+      'pj.quantumAria': '量子力学笔记 GitHub 仓库',
+      'pj.quantumEyebrow': '知识库 · 离线阅读',
+      'pj.quantumTitle': '量子力学笔记',
+      'pj.quantumDesc': '系统笔记的 Markdown 源 + KaTeX 公式渲染的离线 HTML 阅读版。聚焦 EPR 佯谬与贝尔不等式、量子纠缠、量子测量与退相干，与宝石学笔记共用同一套离线优先方法论。',
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · 离线优先，隐私优先',
@@ -132,6 +136,10 @@
       'pj.dlcEyebrow': 'Open-source framework · TypeScript',
       'pj.dlcTitle': 'Digital Life Card Engine · dsh-dlc',
       'pj.dlcDesc': 'The DLC digital-life-card protocol as a native DeepSeek Harness plugin, fully rewritten in TypeScript. State-machine engine, narrative assembly, dual-core linear memory, pluggable storage — mounts straight into DSH via Cordis. Open source on GitHub, MIT licensed, 30 automated tests.',
+      'pj.quantumAria': 'Quantum Physics Notes on GitHub',
+      'pj.quantumEyebrow': 'Knowledge base · Offline reader',
+      'pj.quantumTitle': 'Quantum Physics Notes',
+      'pj.quantumDesc': 'Systematic notes as Markdown source plus a KaTeX-rendered offline HTML reader. Covers the EPR paradox and Bell inequalities, quantum entanglement, quantum measurement and decoherence — built on the same offline-first methodology as the gemmology notes.',
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · Offline first, privacy first',
