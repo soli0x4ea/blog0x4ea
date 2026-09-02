@@ -41,6 +41,10 @@
       'dl.store': 'App Store 下载 ↓',
       'dl.altPuff': 'PuffComic 图标',
       'dl.altGem': '系统宝石学笔记 图标',
+      'dl.altFossil': '标准化石笔记 图标',
+      'dl.altModel': 'ModelLens 图标',
+      'dl.fossilIos': 'iOS · App Store',
+      'dl.modelIos': 'iOS · App Store',
 
       /* ---- about ---- */
       'about.eyebrow': '关于 0x4ea',
@@ -103,6 +107,10 @@
       'dl.store': 'App Store ↓',
       'dl.altPuff': 'PuffComic icon',
       'dl.altGem': 'Systematic Gemmology Notes icon',
+      'dl.altFossil': 'Standard Fossil Notes icon',
+      'dl.altModel': 'ModelLens icon',
+      'dl.fossilIos': 'iOS · App Store',
+      'dl.modelIos': 'iOS · App Store',
 
       /* ---- about ---- */
       'about.eyebrow': 'About 0x4ea',
