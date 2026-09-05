@@ -60,8 +60,8 @@
           <a class="btn btn--ghost" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
         <ul class="hero__stats reveal" aria-label="概览数据">
-          <li><strong>7+</strong><span data-i18n="hero.stat1">在维护项目</span></li>
-          <li><strong>2</strong><span data-i18n="hero.stat2">开源框架</span></li>
+          <li><strong>8+</strong><span data-i18n="hero.stat1">在维护项目</span></li>
+          <li><strong>3</strong><span data-i18n="hero.stat2">开源框架</span></li>
           <li><strong>100%</strong><span data-i18n="hero.stat3">离线优先</span></li>
         </ul>
       </div>
@@ -220,8 +220,44 @@
           </div>
         </a>
 
+        <!-- qm-engine-sdk（与量子力学笔记呼应的开源引擎） -->
+        <a class="card card--lg reveal" style="--i:2" href="https://github.com/soli0x4ea/qm-engine-sdk" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.sdkAria" aria-label="量子模拟引擎 qm-engine-sdk GitHub 仓库">
+          <div class="card__art art--sdk" aria-hidden="true">
+            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="gSdk" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#131c33"/><stop offset="1" stop-color="#22355e"/>
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" fill="url(#gSdk)"/>
+              <!-- 三对角矩阵点阵（LAPACK 求解器） -->
+              <g fill="#8fb7ff" opacity="0.85">
+                <circle cx="52" cy="34" r="2.4"/><circle cx="78" cy="60" r="2.4"/><circle cx="104" cy="86" r="2.4"/><circle cx="130" cy="112" r="2.4"/><circle cx="156" cy="138" r="2.4"/><circle cx="176" cy="158" r="2.4"/>
+                <circle cx="78" cy="34" r="1.7"/><circle cx="104" cy="60" r="1.7"/><circle cx="130" cy="86" r="1.7"/><circle cx="156" cy="112" r="1.7"/><circle cx="176" cy="138" r="1.7"/>
+                <circle cx="52" cy="60" r="1.7"/><circle cx="78" cy="86" r="1.7"/><circle cx="104" cy="112" r="1.7"/><circle cx="130" cy="138" r="1.7"/><circle cx="156" cy="158" r="1.7"/>
+              </g>
+              <!-- 波函数 ψ 曲线 -->
+              <path d="M0 150 Q 25 108 50 150 T 100 150 T 150 150 T 200 150" fill="none" stroke="#9fd0ff" stroke-opacity="0.75" stroke-width="2"/>
+              <path d="M0 150 Q 25 174 50 150 T 100 150 T 150 150 T 200 150" fill="none" stroke="#5f8fd8" stroke-opacity="0.4" stroke-width="1.6"/>
+              <!-- 本征值谱线 -->
+              <g stroke="#c9dcff" stroke-opacity="0.55" stroke-width="1.4">
+                <line x1="36" y1="176" x2="36" y2="188"/><line x1="70" y1="182" x2="70" y2="188"/><line x1="108" y1="170" x2="108" y2="188"/><line x1="140" y1="179" x2="140" y2="188"/><line x1="170" y1="173" x2="170" y2="188"/>
+              </g>
+              <g fill="#ffffff" opacity="0.4">
+                <circle cx="30" cy="28" r="1.1"/><circle cx="150" cy="20" r="1"/><circle cx="24" cy="96" r="1"/><circle cx="182" cy="60" r="1.2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card__body">
+            <p class="card__eyebrow" data-i18n="pj.sdkEyebrow">开源框架 · Swift / SPM</p>
+            <h3 class="card__title" data-i18n="pj.sdkTitle">量子模拟引擎 · qm-engine-sdk</h3>
+            <p class="card__desc" data-i18n="pj.sdkDesc">63 个量子力学仿真模块的 Swift 计算引擎（EngineKit + QMModules）：三对角/部分谱本征值、FFT、路径积分与 StrategyCore 计算调度，基于 Apple Accelerate/LAPACK，零第三方依赖，446 项自动化测试。GitHub 开源，MIT 协议。</p>
+            <ul class="tags"><li>Swift</li><li>LAPACK</li><li>MIT</li></ul>
+          </div>
+        </a>
+
         <!-- PuffComic -->
-        <a class="card card--wide reveal" style="--i:2" href="https://github.com/soli0x4ea/PuffComic" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.comicAria" aria-label="PuffComic 离线漫画阅读器 GitHub 仓库">
+        <a class="card card--wide reveal" style="--i:3" href="https://github.com/soli0x4ea/PuffComic" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.comicAria" aria-label="PuffComic 离线漫画阅读器 GitHub 仓库">
           <div class="card__art art--comic" aria-hidden="true">
             <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">
               <rect x="14" y="18" width="135" height="120" rx="8" fill="#fff" opacity="0.92"/>
@@ -243,7 +279,7 @@
         </a>
 
         <!-- DLC Protocol -->
-        <a class="card card--wide reveal" style="--i:3" href="https://github.com/soli0x4ea/dsh-dlc" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.dlcAria" aria-label="数字生命卡引擎 dsh-dlc GitHub 仓库">
+        <a class="card card--wide reveal" style="--i:4" href="https://github.com/soli0x4ea/dsh-dlc" target="_blank" rel="noopener noreferrer" data-i18n-aria="pj.dlcAria" aria-label="数字生命卡引擎 dsh-dlc GitHub 仓库">
           <div class="card__art art--dlc" aria-hidden="true">
             <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">
               <defs>

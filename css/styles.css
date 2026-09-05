@@ -258,6 +258,7 @@ a { color: inherit; text-decoration: none; }
 .art--dlc { background: #1b1340; }
 .art--ai { background: linear-gradient(135deg, #2a2a4a, #3a3a6a); }
 .art--quant { background: linear-gradient(135deg, #16302a, #1f4a3c); }
+.art--sdk { background: linear-gradient(135deg, #131c33, #22355e); }
 .art--facet { background: linear-gradient(135deg, #e3f4ff, #bfe9ff); }
 .art--fin { background: linear-gradient(135deg, #2a2f3a, #3a4658); }
 

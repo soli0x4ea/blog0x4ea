@@ -70,6 +70,10 @@
       'pj.quantumEyebrow': '知识库 · 离线阅读',
       'pj.quantumTitle': '量子力学笔记',
       'pj.quantumDesc': '系统笔记的 Markdown 源 + KaTeX 公式渲染的离线 HTML 阅读版。聚焦 EPR 佯谬与贝尔不等式、量子纠缠、量子测量与退相干，与宝石学笔记共用同一套离线优先方法论。',
+      'pj.sdkAria': '量子模拟引擎 qm-engine-sdk GitHub 仓库',
+      'pj.sdkEyebrow': '开源框架 · Swift / SPM',
+      'pj.sdkTitle': '量子模拟引擎 · qm-engine-sdk',
+      'pj.sdkDesc': '63 个量子力学仿真模块的 Swift 计算引擎（EngineKit + QMModules）：三对角/部分谱本征值、FFT、路径积分与 StrategyCore 计算调度，基于 Apple Accelerate/LAPACK，零第三方依赖，446 项自动化测试。GitHub 开源，MIT 协议。',
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · 离线优先，隐私优先',
@@ -140,6 +144,10 @@
       'pj.quantumEyebrow': 'Knowledge base · Offline reader',
       'pj.quantumTitle': 'Quantum Physics Notes',
       'pj.quantumDesc': 'Systematic notes as Markdown source plus a KaTeX-rendered offline HTML reader. Covers the EPR paradox and Bell inequalities, quantum entanglement, quantum measurement and decoherence — built on the same offline-first methodology as the gemmology notes.',
+      'pj.sdkAria': 'QM simulation engine qm-engine-sdk on GitHub',
+      'pj.sdkEyebrow': 'Open-source framework · Swift / SPM',
+      'pj.sdkTitle': 'QM Simulation Engine · qm-engine-sdk',
+      'pj.sdkDesc': 'The Swift computation engine behind the QM simulator: 63 quantum-mechanics simulation modules (EngineKit + QMModules) — tridiagonal / partial eigensolvers, FFT, path integrals and a StrategyCore compute scheduler on Apple Accelerate/LAPACK. Zero third-party dependencies, 446 automated tests, MIT licensed.',
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · Offline first, privacy first',
