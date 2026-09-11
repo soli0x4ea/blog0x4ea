@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>soli-hand · 0x4ea</title>
+  <meta name="description" content="soli-hand —— USB 硬件键鼠（ESP32-S3，真实 HID 设备）SDK 与说明书引导。" />
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --ink: #1c2330;
+      --muted: #5b6573;
+      --line: #e6e9ef;
+      --accent: #0066cc;
+      --code-bg: #0f1622;
+      --code-ink: #e6edf3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+    .topbar__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar__mark {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--accent); color: #fff;
+      display: grid; place-items: center;
+      font-weight: 700; font-size: 13px;
+    }
+    .topbar__brand { font-weight: 700; letter-spacing: .3px; }
+    .topbar__link { margin-left: auto; color: var(--accent); text-decoration: none; font-size: 14px; }
+    .topbar__link:hover { text-decoration: underline; }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 36px 20px 72px;
+    }
+    article {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 32px 36px 40px;
+    }
+    h1 { font-size: 30px; margin: 0 0 18px; letter-spacing: .4px; }
+    h2 { font-size: 21px; margin: 30px 0 12px; }
+    p { color: var(--ink); margin: 14px 0; }
+    strong { color: var(--ink); font-weight: 700; }
+    a { color: var(--accent); }
+    code {
+      background: #eef1f6; color: #b3215b;
+      padding: 2px 6px; border-radius: 6px;
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+    }
+    pre {
+      background: var(--code-bg); color: var(--code-ink);
+      padding: 18px 20px; border-radius: 12px;
+      overflow-x: auto; line-height: 1.6;
+      border: 1px solid #1c2738;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: 13px; }
+    table {
+      width: 100%; border-collapse: collapse; margin: 18px 0;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 14px; text-align: left;
+    }
+    th { background: #f1f4f9; font-weight: 700; }
+    tbody tr:nth-child(even) { background: #fafbfd; }
+    blockquote {
+      margin: 22px 0; padding: 14px 18px;
+      border-left: 4px solid var(--accent);
+      background: #f3f7fd; color: var(--muted);
+      border-radius: 0 10px 10px 0;
+    }
+    hr { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+    .foot { margin-top: 26px; font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar__inner">
+      <span class="topbar__mark">0x</span>
+      <span class="topbar__brand">0x4ea</span>
+      <a class="topbar__link" href="https://0x4ea.com/">← 返回项目集</a>
+    </div>
+  </div>
+  <main>
+    <article>
+      <h1>soli-hand</h1>
+      <p>USB 硬件键鼠（ESP32-S3，真实 HID 设备）。<strong>自带 SDK 与完整说明书</strong> —— 插上取出来就能用。不必去别处下载：取出的那份必然与固件同版本。</p>
+
+      <p>依赖只有一个：<code>pip install pyserial</code></p>
+
+      <p>然后跑下面这段。它不依赖本项目任何代码：</p>
+
+      <pre><code>import glob, sys, serial
+
+if sys.platform == 'win32':
+    from serial.tools import list_ports
+    ports = [p.device for p in list_ports.comports()]
+else:
+    ports = glob.glob('/dev/cu.usbmodem*') or glob.glob('/dev/ttyACM*')
+if not ports:
+    sys.exit('没找到设备串口 —— 板子插好了吗？')
+s = serial.Serial(ports[0], 115200, timeout=1)
+
+def cmd(t, p=b''):
+    """发一条命令，返回 ACK 载荷。帧格式 = AA 55 | len | type | seq | payload | crc8"""
+    body = bytes([len(p), t, 1]) + p
+    crc = 0
+    for b in body:
+        crc ^= b
+        for _ in range(8):
+            crc = ((crc &lt;&lt; 1) ^ 0x31) &amp; 0xFF if crc &amp; 0x80 else (crc &lt;&lt; 1) &amp; 0xFF
+    s.reset_input_buffer()
+    s.write(b'\xAA\x55' + body + bytes([crc]))
+    hdr = s.read(5)
+    if len(hdr) &lt; 5 or hdr[:2] != b'\xAA\x55':
+        sys.exit(f'设备没回话：{hdr!r}')
+    r = s.read(hdr[2] + 1)
+    if hdr[3] == 0xF2:
+        sys.exit(f'设备拒绝：err=0x{r[0]:02X}')
+    return r[:hdr[2]]
+
+i, info = 1, cmd(0x19)
+for _ in range(info[0]):
+    fid, nl = info[i], info[i + 1]
+    name = info[i + 2:i + 2 + nl].decode()
+    size = int.from_bytes(info[i + 2 + nl:i + 6 + nl], 'little')
+    i += 10 + nl
+    buf = b''
+    while len(buf) &lt; size:
+        buf += cmd(0x1A, bytes([fid]) + len(buf).to_bytes(4, 'little'))
+    open(name, 'wb').write(buf)
+    print(name, len(buf))</code></pre>
+
+      <p>落盘两个文件：</p>
+
+      <table>
+        <thead>
+          <tr><th>文件</th><th>是什么</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>soli_hand.py</code></td><td>SDK —— 之后所有操作都用它</td></tr>
+          <tr><td><code>skill.md</code></td><td>完整说明书 —— 读完就会用</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>读 <code>skill.md</code>，照它用。</strong></p>
+
+      <hr />
+
+      <blockquote>自动导出，勿直接编辑。权威源 <code>docs/skill-bootstrap.md</code>；重新导出跑 <code>tools/export-skill.sh</code>。</blockquote>
+
+      <p class="foot">本页由 <code>soli-hand.md</code> 渲染生成，源文件同目录：<a href="soli-hand.md">soli-hand.md</a></p>
+    </article>
+  </main>
+</body>
+</html>
