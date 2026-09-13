@@ -45,6 +45,10 @@
       'dl.altModel': 'ModelLens 图标',
       'dl.fossilIos': 'iOS · App Store',
       'dl.modelIos': 'iOS · App Store',
+      'dl.quantumIos': 'iOS · App Store',
+      'dl.qmsimIos': 'iOS · App Store',
+      'dl.altQuantum': '量子力学笔记 图标',
+      'dl.altQmsim': '量子力学计算模拟器 图标',
 
       /* ---- about ---- */
       'about.eyebrow': '关于 0x4ea',
@@ -74,6 +78,10 @@
       'pj.sdkEyebrow': '开源框架 · Swift / SPM',
       'pj.sdkTitle': '量子模拟引擎 · qm-engine-sdk',
       'pj.sdkDesc': '63 个量子力学仿真模块的 Swift 计算引擎（EngineKit + QMModules）：三对角/部分谱本征值、FFT、路径积分与 StrategyCore 计算调度，基于 Apple Accelerate/LAPACK，零第三方依赖，446 项自动化测试。GitHub 开源，MIT 协议。',
+      'pj.handAria': 'soli-hand GitHub 仓库',
+      'pj.handEyebrow': '硬件 + 应用 · 开源',
+      'pj.handTitle': 'soli-hand · 把 AI 动作变成外设输入',
+      'pj.handDesc': '一枚插上即被系统识别为标准键鼠/手柄的 USB 硬件手：把 AI 动作变成真正的外设输入，无驱动、无特权、无注入。ESP32-S3 固件在硬件内完成运动拟真，配 iOS 遥控 App，经 BLE 把手机变成电脑的触控板、键盘与手柄。固件、跨平台 SDK 与 App 源码一并开源，MIT 协议。',
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · 离线优先，隐私优先',
@@ -119,6 +127,10 @@
       'dl.altModel': 'ModelLens icon',
       'dl.fossilIos': 'iOS · App Store',
       'dl.modelIos': 'iOS · App Store',
+      'dl.quantumIos': 'iOS · App Store',
+      'dl.qmsimIos': 'iOS · App Store',
+      'dl.altQuantum': 'Quantum Physics Notes icon',
+      'dl.altQmsim': 'QM Simulator icon',
 
       /* ---- about ---- */
       'about.eyebrow': 'About 0x4ea',
@@ -148,6 +160,10 @@
       'pj.sdkEyebrow': 'Open-source framework · Swift / SPM',
       'pj.sdkTitle': 'QM Simulation Engine · qm-engine-sdk',
       'pj.sdkDesc': 'The Swift computation engine behind the QM simulator: 63 quantum-mechanics simulation modules (EngineKit + QMModules) — tridiagonal / partial eigensolvers, FFT, path integrals and a StrategyCore compute scheduler on Apple Accelerate/LAPACK. Zero third-party dependencies, 446 automated tests, MIT licensed.',
+      'pj.handAria': 'soli-hand on GitHub',
+      'pj.handEyebrow': 'Hardware + app · Open source',
+      'pj.handTitle': 'soli-hand · Turn AI actions into peripheral input',
+      'pj.handDesc': 'A plug-and-play USB hardware hand the OS recognises as a standard keyboard, mouse or gamepad — turning AI actions into real peripheral input with no driver, no privileges and no injection. The ESP32-S3 firmware handles motion realism on-device, paired with an iOS remote app that turns your phone into a trackpad, keyboard and gamepad over BLE. Firmware, cross-platform SDK and app source included, MIT licensed.',
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · Offline first, privacy first',

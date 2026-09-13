@@ -253,6 +253,8 @@ a { color: inherit; text-decoration: none; }
 [data-theme="dark"] .card--wide .card__body { background: linear-gradient(90deg, var(--card) 60%, rgba(22,22,24,0) 100%); }
 
 .card__art svg { width: 100%; height: 100%; display: block; }
+.card__art img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+.art--hand { background: #0b1220; }
 .art--gem { background: linear-gradient(135deg, #eaf4ff, #cfe4fb); }
 .art--comic { background: linear-gradient(135deg, #ffe9dc, #ffd2bd); }
 .art--dlc { background: #1b1340; }
