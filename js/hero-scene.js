@@ -22,6 +22,7 @@
 
   var sceneW = 0, sceneH = 0;
   var stars = [], clouds = [], fireflies = [];
+  var t3 = 0;                             // current time, shared by the sprite pass
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -61,18 +62,21 @@
   /* ---------- pixel characters (procedural sprites, match reference) ---------- */
   // palette codes used inside the sprite maps ('.' = transparent)
   var CPAL = {
-    H: [108, 148, 190],   // blue hair
-    S: [250, 222, 190],   // skin
-    E: [45, 45, 55],      // eye (dark)
-    L: [250, 222, 190],   // leg (skin)
-    K: [80, 80, 92],      // shoe / dark trim
-    O: [238, 178, 112],   // cat orange
-    C: [252, 248, 240],   // cream / white
-    P: [246, 182, 196],   // pink
-    R: [202, 206, 216],   // robot silver
-    V: [58, 68, 88],      // robot visor
-    G: [140, 220, 230],   // robot eye light
-    A: [160, 160, 170]    // antenna
+    H: [122, 162, 214],   // hair (default blue)
+    S: [252, 226, 200],   // skin
+    E: [58, 62, 78],      // eye (dark)
+    P: [248, 172, 188],   // blush / pink
+    M: [208, 126, 138],   // mouth / nose
+    D: [188, 214, 236],   // dress (default)
+    L: [252, 226, 200],   // leg (skin)
+    W: [252, 250, 244],   // sock / sparkle
+    K: [92, 94, 112],     // shoe
+    O: [242, 172, 112],   // cat orange
+    C: [252, 250, 244],   // cream / fur
+    R: [198, 204, 216],   // robot silver
+    V: [64, 74, 96],      // robot visor
+    G: [138, 222, 232],   // robot eye light
+    A: [170, 172, 184]    // antenna
   };
   var CHAR_NIGHT = [26, 34, 60];
   var characters = [];
@@ -83,10 +87,10 @@
     "...HHHHHH...",
     "..HHHHHHHH..",
     "..HHSSSSHH..",
-    "..HSSSSSSH..",
-    "..HSESSESH..",
-    "..HSSSSSSH..",
-    ".HHSSSSSSHH.",
+    ".HSSSSSSSSH.",
+    ".SSEESSEESS.",
+    ".SPSSSSSSPS.",
+    ".SSSSMMSSSS.",
     ".HHSSSSSSHH.",
     ".HHHDDDDHHH.",
     ".HHDDDDDDHH.",
@@ -99,13 +103,12 @@
     "...HHHHHH...",
     "..HHHHHHHH..",
     "..HHSSSSHH..",
-    "..HSSSSSSH..",
-    "..HSESSESH..",
-    "..HSSSSSSH..",
-    "..HHSSSSHH..",
-    "...SSSSSS...",
+    ".HSSSSSSSSH.",
+    ".SSEESSEESS.",
+    ".SPSSSSSSPS.",
+    ".SSSSMMSSSS.",
+    "..SSSSSSSS..",
     "...DDDDDD...",
-    "..DDDDDDDD..",
     "..DDDDDDDD..",
     "..DDDDDDDD..",
     "...DDDDDD..."
@@ -116,37 +119,36 @@
     "...HHHHHH...",
     "..HHHHHHHH..",
     "..HHSSSSHH..",
-    "..HSSSSSSH..",
-    "..HSESSESH..",
-    "..HSSSSSSH..",
-    "...SSSSSS...",
+    ".HSSSSSSSSH.",
+    ".SSEESSEESS.",
+    ".SPSSSSSSPS.",
+    ".SSSSMMSSSS.",
+    "..SSSSSSSS..",
     "...DDDDDD...",
-    "..DDDDDDDD..",
     "..DDDDDDDD..",
     "..DDDDDDDD..",
     "...DDDDDD..."
   ];
+  // legs: bare calf -> white sock -> small dark shoe (reads as a real step)
   var LEGS_A = [
     "..LL....LL..",
     "..LL....LL..",
-    "..LL....LL..",
-    "..KK....KK..",
+    "..WW....WW..",
     "..KK....KK.."
   ];
   var LEGS_B = [
     "...LL..LL...",
     "...LL..LL...",
-    "...LL..LL...",
-    "...KK..KK...",
+    "...WW..WW...",
     "...KK..KK..."
   ];
   var CAT = [
     "..O......O..",
     "..OO....OO..",
-    "..OOO..OOO..",
+    "..OPO..OPO..",
     "..OOOOOOOO..",
-    "..OOEOOEOO..",
-    "..OOOOOOOO..",
+    "..OEEOOEEO..",
+    "..POOMMOOP..",
     "..OOOOOOOO..",
     ".OOOOOOOOOO.",
     ".OOOCCCCOOO.",
@@ -154,18 +156,27 @@
     ".OOOOOOOOOO.",
     "..OOOOOOOO.."
   ];
+  // cat paws: soft pink toe beans
+  var CLEGS_A = [
+    "...OO..OO...",
+    "...PP..PP..."
+  ];
+  var CLEGS_B = [
+    "..OO....OO..",
+    "..PP....PP.."
+  ];
   var BUNNY_TOP = [
     "..C......C..",
     "..CC....CC..",
     "..CPC..CPC..",
     "..CPC..CPC..",
     "..CCCCCCCC..",
-    "..CCCCCCCC..",
     "..CEECCEEC..",
+    "..CPCCCCPC..",
+    "..CCCMMCCC..",
     "..CCCCCCCC..",
     "...CCCCCC...",
-    "..CCCPPPCC..",
-    "..CCCPPPCC..",
+    "..CCCCCCCC..",
     "..CCCCCCCC..",
     "...CCCCCC..."
   ];
@@ -175,31 +186,32 @@
     "..CPC..CPC..",
     "..CCCCCCCC..",
     "..CEECCEEC..",
-    "..CCCCCCCC..",
-    "..CCCPPPCC..",
+    "..CPCCCCPC..",
+    "..CCCMMCCC..",
     "..CCCCCCCC..",
     "...CCCCCC..."
   ];
+  // bunny feet: soft pink toe beans instead of shoes
   var BLEGS_A = [
-    "...CC..CC...",
-    "...CC..CC...",
-    "...CC..CC...",
-    "..CCC..CCC.."
+    "..CC....CC..",
+    "..CC....CC..",
+    "..PP....PP..",
+    "..PP....PP.."
   ];
   var BLEGS_B = [
-    "..CC....CC..",
-    "..CC....CC..",
-    "..CC....CC..",
-    "..CCC..CCC.."
+    "...CC..CC...",
+    "...CC..CC...",
+    "...PP..PP...",
+    "...PP..PP..."
   ];
   var ROBOT_TOP = [
-    ".....AA.....",
+    ".....GG.....",
     ".....AA.....",
     "..RRRRRRRR..",
-    "..RRRRRRRR..",
-    "..RVVVVVVR..",
+    "..RRVVVVRR..",
     "..RVVGGVVR..",
     "..RVVVVVVR..",
+    "..RRPRRPRR..",
     "..RRRRRRRR..",
     "...RRRRRR...",
     "..RRRRRRRR..",
@@ -208,14 +220,27 @@
     "...RRRRRR..."
   ];
   var RLEGS_A = [
+    "..RR....RR..",
+    "..RR....RR..",
+    ".KKK....KKK."
+  ];
+  var RLEGS_B = [
     "...RR..RR...",
     "...RR..RR...",
     "..KKK..KKK.."
   ];
-  var RLEGS_B = [
-    "..RR....RR..",
-    "..RR....RR..",
-    "..KKK..KKK.."
+
+  // ---- emotes that pop above a character's head ----
+  var HEART = [
+    ".P.P.",
+    "PPPPP",
+    ".PPP.",
+    "..P.."
+  ];
+  var SPARKLE = [
+    ".W.",
+    "WWW",
+    ".W."
   ];
 
   function buildFrames(top, legsA, legsB) {
@@ -224,18 +249,18 @@
   }
 
   function initCharacters() {
-    // left-to-right lineup matching the reference image
+    // left-to-right lineup; each character gets its own hair / outfit tint
     var defs = [
-      { top: GIRL_LONG,   la: LEGS_A,  lb: LEGS_B,  dress: [188, 214, 236] },
-      { top: GIRL_SHORT,  la: LEGS_A,  lb: LEGS_B,  dress: [120, 160, 200] },
-      { top: GIRL_BUN,    la: LEGS_A,  lb: LEGS_B,  dress: [168, 186, 200] },
-      { top: CAT,         la: [],      lb: [],      dress: null },
-      { top: BUNNY_TOP,   la: BLEGS_A, lb: BLEGS_B, dress: null },
-      { top: GIRL_LONG,   la: LEGS_A,  lb: LEGS_B,  dress: [240, 244, 248] },
-      { top: BUNNY_SMALL, la: BLEGS_A, lb: BLEGS_B, dress: null },
-      { top: BUNNY_TOP,   la: BLEGS_A, lb: BLEGS_B, dress: null },
-      { top: ROBOT_TOP,   la: RLEGS_A, lb: RLEGS_B, dress: null },
-      { top: ROBOT_TOP,   la: RLEGS_A, lb: RLEGS_B, dress: null }
+      { top: GIRL_LONG,   la: LEGS_A,  lb: LEGS_B,  tint: { H: [122, 162, 214], D: [188, 214, 236] } },
+      { top: GIRL_SHORT,  la: LEGS_A,  lb: LEGS_B,  tint: { H: [206, 146, 112], D: [238, 186, 146] } },
+      { top: GIRL_BUN,    la: LEGS_A,  lb: LEGS_B,  tint: { H: [176, 142, 198], D: [216, 192, 236] } },
+      { top: CAT,         la: CLEGS_A, lb: CLEGS_B, tint: null },
+      { top: BUNNY_TOP,   la: BLEGS_A, lb: BLEGS_B, tint: null },
+      { top: GIRL_LONG,   la: LEGS_A,  lb: LEGS_B,  tint: { H: [226, 182, 126], D: [246, 244, 238] } },
+      { top: BUNNY_SMALL, la: BLEGS_A, lb: BLEGS_B, tint: null },
+      { top: BUNNY_TOP,   la: BLEGS_A, lb: BLEGS_B, tint: { C: [234, 228, 246] } },
+      { top: ROBOT_TOP,   la: RLEGS_A, lb: RLEGS_B, tint: null },
+      { top: ROBOT_TOP,   la: RLEGS_A, lb: RLEGS_B, tint: { R: [208, 184, 202], V: [72, 62, 92] } }
     ];
     characters = [];
     var n = defs.length;
@@ -245,32 +270,45 @@
       characters.push({
         cx: left + (right - left) * (n === 1 ? 0.5 : i / (n - 1)),
         frames: buildFrames(d.top, d.la, d.lb),
-        dress: d.dress,
-        phase: i * 0.7
+        tint: d.tint,
+        phase: i * 0.7,
+        // emote: idle countdown, then a short heart / sparkle float
+        eNext: rand(1.5, 7),
+        eLife: 0,
+        eKind: 0
       });
     }
   }
 
-  function chCol(day) { return lerp3(day, CHAR_NIGHT, night * 0.82); }
+  function chCol(day) { return lerp3(day, CHAR_NIGHT, night * 0.7); }
 
-  function drawCharacter(ch, t) {
+  function charFootY() {
     var bandH = Math.max(6, Math.round(sceneH * 0.13));
-    var footY = (sceneH - bandH) - 1;                 // stand on grass surface
-    // in-place stepping: small vertical bob synced to the leg swap
-    var step = Math.floor(t * 3.2 + ch.phase) % 2;    // 0 / 1 frame toggle
+    return (sceneH - bandH) - 1;                    // grass surface line
+  }
+
+  function drawCharacter(ch) {
+    var footY = charFootY();
+    var step = Math.floor(t3 * 2.9 + ch.phase) % 2;   // 0 / 1 walk frame
     var bob = reduceMotion ? 0 : (step === 0 ? 0 : -1);
     var map = ch.frames[step];
     var y = footY - bob;
 
-    // resolve colors (day/night crossfade)
+    // resolve colors (day/night crossfade + per-character tint)
     var pal = {};
     for (var k in CPAL) pal[k] = chCol(CPAL[k]);
-    if (ch.dress) pal.D = chCol(ch.dress);
+    if (ch.tint) for (var tk in ch.tint) pal[tk] = chCol(ch.tint[tk]);
 
     var rows = map.length;
     var w = map[0].length;
     var x0 = Math.round(ch.cx - w / 2);
     var yTop = y - rows + 1;
+
+    // soft contact shadow, narrower while the body bobs up
+    var sw = w - (bob ? 5 : 3);
+    octx.fillStyle = css([0, 0, 0], 0.12 * (1 - night * 0.5));
+    octx.fillRect(Math.round(ch.cx - sw / 2), footY + 1, sw, 1);
+
     for (var r = 0; r < rows; r++) {
       var line = map[r];
       for (var c = 0; c < w; c++) {
@@ -284,8 +322,45 @@
     }
   }
 
-  function drawCharacters(t) {
-    for (var i = 0; i < characters.length; i++) drawCharacter(characters[i], t);
+  function updateEmotes(dt) {
+    for (var i = 0; i < characters.length; i++) {
+      var ch = characters[i];
+      if (ch.eLife > 0) {
+        ch.eLife += dt;
+        if (ch.eLife > 1.7) { ch.eLife = 0; ch.eNext = rand(4, 13); }
+      } else {
+        ch.eNext -= dt;
+        if (ch.eNext <= 0) {
+          ch.eLife = 0.001;
+          ch.eKind = Math.random() < 0.58 ? 0 : 1;   // heart / sparkle
+        }
+      }
+    }
+  }
+
+  function drawEmotes(ch) {
+    if (reduceMotion || ch.eLife <= 0) return;
+    var p = ch.eLife / 1.7;                          // 0 -> 1
+    var a = p < 0.16 ? p / 0.16 : 1 - (p - 0.16) / 0.84;
+    if (a <= 0) return;
+    var map = ch.eKind === 0 ? HEART : SPARKLE;
+    var rows = ch.frames[0].length;
+    var limb = ch.eKind === 0 ? [248, 162, 182] : [255, 240, 190];
+    var oy = charFootY() - rows + 1 - 4 - Math.round(p * 11);
+    var ox = Math.round(ch.cx) + (ch.eKind === 0 ? 5 : -7);
+    octx.fillStyle = css(chCol(limb), Math.min(1, a) * (1 - night * 0.35));
+    for (var r = 0; r < map.length; r++) {
+      for (var c = 0; c < map[r].length; c++) {
+        if (map[r][c] !== '.') octx.fillRect(ox + c, oy + r, 1, 1);
+      }
+    }
+  }
+
+  function drawCharacters() {
+    for (var i = 0; i < characters.length; i++) {
+      drawCharacter(characters[i]);
+      drawEmotes(characters[i]);
+    }
   }
 
   /* ---------- entity init (on resize) ---------- */
@@ -510,7 +585,7 @@
     drawClouds();
     drawFireflies(t);
     drawGrass(t);
-    drawCharacters(t);
+    drawCharacters();
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(off, 0, 0, sceneW, sceneH, 0, 0, canvas.width, canvas.height);
@@ -524,6 +599,8 @@
     var t = ts / 1000;
     var dt = last ? Math.min(0.1, t - last) : 0.016;
     last = t;
+    t3 = t;
+    updateEmotes(dt);
     if (night !== nightTarget) {
       var step = dt * 1.6;
       night = Math.abs(nightTarget - night) <= step
