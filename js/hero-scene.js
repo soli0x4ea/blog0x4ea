@@ -15,7 +15,7 @@
   var hero = canvas.closest('.hero') || canvas.parentElement;
   var root = document.documentElement;
 
-  var LOGICAL_W = 288;                    // logical pixel width (chunky pixels)
+  var LOGICAL_W = 480;                    // logical pixel width (chunky pixels)
   var off = document.createElement('canvas');
   var octx = off.getContext('2d');
   var ctx = canvas.getContext('2d');
@@ -62,172 +62,168 @@
   /* ---------- pixel characters (procedural sprites, match reference) ---------- */
   // palette codes used inside the sprite maps ('.' = transparent)
   var CPAL = {
-    H: [122, 162, 214],   // hair (default blue)
-    S: [252, 226, 200],   // skin
-    E: [58, 62, 78],      // eye (dark)
-    P: [248, 172, 188],   // blush / pink
-    M: [208, 126, 138],   // mouth / nose
-    D: [188, 214, 236],   // dress (default)
-    L: [252, 226, 200],   // leg (skin)
-    W: [252, 250, 244],   // sock / sparkle
-    K: [92, 94, 112],     // shoe
-    O: [242, 172, 112],   // cat orange
-    C: [252, 250, 244],   // cream / fur
-    R: [198, 204, 216],   // robot silver
-    V: [64, 74, 96],      // robot visor
-    G: [138, 222, 232],   // robot eye light
-    A: [170, 172, 184]    // antenna
+    A: [ 58,  42,  34],   // outline
+    S: [246, 214, 186],   // skin
+    s: [224, 184, 152],   // skin shadow
+    E: [255, 255, 255],   // eye glint
+    I: [132,  88,  60],   // iris
+    P: [240, 152, 148],   // blush
+    M: [198,  92,  88],   // mouth
+    H: [104,  72,  52],   // hair
+    h: [ 74,  48,  34],   // hair dark
+    J: [150, 112,  80],   // hair light
+    D: [124, 156,  92],   // cloth
+    d: [ 92, 118,  68],   // cloth dark
+    L: [156, 186, 120],   // cloth light
+    T: [150,  96,  58],   // leather
+    t: [110,  68,  38],   // leather dark
+    R: [200, 206, 214],   // metal
+    N: [ 84,  74,  84],   // trousers
+    G: [126, 220, 232]    // gem / glow
   };
   var CHAR_NIGHT = [26, 34, 60];
   var characters = [];
 
-  // ---- sprite maps; top = head+body, leg rows swap for a 2-frame walk ----
-  var GIRL_LONG = [
-    "....HHHH....",
-    "...HHHHHH...",
-    "..HHHHHHHH..",
-    "..HHSSSSHH..",
-    ".HSSSSSSSSH.",
-    ".SSEESSEESS.",
-    ".SPSSSSSSPS.",
-    ".SSSSMMSSSS.",
-    ".HHSSSSSSHH.",
-    ".HHHDDDDHHH.",
-    ".HHDDDDDDHH.",
-    "..DDDDDDDD..",
-    "..DDDDDDDD..",
-    "...DDDDDD..."
+  /* ---------- pixel characters (procedural chibi sprites) ---------- */
+
+  // codes: A outline | S skin s shadow | E glint | I iris | P blush | M mouth
+
+  //        H hair h dark J light | D cloth d dark L light | T leather t dark
+
+  //        R metal | N trousers | G gem
+
+  var CH_BODY_CAT = [
+    "................................",
+    "......A..................A......",
+    "......A..................A......",
+    ".....AhA......AAA.......AhA.....",
+    ".....AhA..AAAALLLAAAA...AhA.....",
+    "....AhhhAALLLLLLLLLLLAAAhhhA....",
+    "....AhhhhLLLLLLLLLLLLLLhhhhA....",
+    "...AhhhhhhLLLLLLLLLLLLhhhhhhA...",
+    "...AhhhhhhLJJJJJJJJJLLhhhhhhA...",
+    "..AAhhhhhJJJJJJJJJJJJJhhhhhAAA..",
+    "....ALLLJJJJJJJJJJJJJJJLLLA.....",
+    "...ALLLHHHHHHHHHHHHHHHHHLLLA....",
+    "...ADDHHHHHHHHHHHHHHHHHHHDDA....",
+    "..ADDHHHHHHHHHHHHHHHHHHHHHDDA...",
+    "..ADDHHHHHHHSSSSSSSHHHHHHHDDA...",
+    "..ADDHHHHHSSSSSSSSSSSHHHHHDDA...",
+    "..ADHHHHHSSSSSSSSSSSSSHHHHHDA...",
+    "..ADHHHHSSSSSSSSSSSSSSSHHHHDA...",
+    "..ADHHHHSSAAAASSSSAAAASHHHHDA...",
+    "..ADDHHHSAEEIIASSAEEIIAHHHDDA...",
+    "..ADDHHHSAEIIIASSAEIIIAHHHDDA...",
+    "...ADHHHSAIIIIASSAIIIIAHHHDA....",
+    "...ADDHHSSAAAASSSSAAAASHHDDA....",
+    "....ADDHHPPPSSSSSSSSPPPHDDA.....",
+    "....ADDDhhSSSSSMMSSSShhDDDA.....",
+    ".....AdddhhSSSSSSSSShhdddA......",
+    "......AddddhhhssshhhddddA.......",
+    ".......AddDDDDRRRRDDDDdA........",
+    ".....AADDDDDDRGGGGRDDDDDAA......",
+    "....AdddLLLLDDRRRRDDLLLLddAA....",
+    "....AdddLLLLDDDDDDDDLLLLdddA....",
+    "...AddddDTTTTTRRRRTTTTTDdddA....",
+    "...ADTTTDTTTTTRRRRTTTTTDTTTA....",
+    "..ADDTTTDDDDDDDDDDDDDDDDTTTDA...",
+    "..AAAAAAADDDDDDAADDDDDDAAAAAA..."
   ];
-  var GIRL_SHORT = [
-    "....HHHH....",
-    "...HHHHHH...",
-    "..HHHHHHHH..",
-    "..HHSSSSHH..",
-    ".HSSSSSSSSH.",
-    ".SSEESSEESS.",
-    ".SPSSSSSSPS.",
-    ".SSSSMMSSSS.",
-    "..SSSSSSSS..",
-    "...DDDDDD...",
-    "..DDDDDDDD..",
-    "..DDDDDDDD..",
-    "...DDDDDD..."
+
+  var CH_BODY_BUNNY = [
+    ".....AAAAAA.........AAAAAA......",
+    ".....AhhhhA.........AhhhhA......",
+    ".....AhhhhA.........AhhhhA......",
+    ".....AhhhhA...AAA...AhhhhA......",
+    ".....AhhhhhAAALLLAAAhhhhhA......",
+    "......AhhhLLLLLLLLLLLhhhA.......",
+    "......AhhhLLLLLLLLLLLhhhA.......",
+    "......AhhLLLLLLLLLLLLLhhA.......",
+    ".....ALLLLLJJJJJJJJJLLLLLA......",
+    "....ALLLLJJJJJJJJJJJJJLLLLA.....",
+    "....ALLLJJJJJJJJJJJJJJJLLLA.....",
+    "...ALLLHHHHHHHHHHHHHHHHHLLLA....",
+    "...ADDHHHHHHHHHHHHHHHHHHHDDA....",
+    "..ADDHHHHHHHHHHHHHHHHHHHHHDDA...",
+    "..ADDHHHHHHHSSSSSSSHHHHHHHDDA...",
+    "..ADDHHHHHSSSSSSSSSSSHHHHHDDA...",
+    "..ADHHHHHSSSSSSSSSSSSSHHHHHDA...",
+    "..ADHHHHSSSSSSSSSSSSSSSHHHHDA...",
+    "..ADHHHHSSAAAASSSSAAAASHHHHDA...",
+    "..ADDHHHSAEEIIASSAEEIIAHHHDDA...",
+    "..ADDHHHSAEIIIASSAEIIIAHHHDDA...",
+    "...ADHHHSAIIIIASSAIIIIAHHHDA....",
+    "...ADDHHSSAAAASSSSAAAASHHDDA....",
+    "....ADDHHPPPSSSSSSSSPPPHDDA.....",
+    "....ADDDhhSSSSSMMSSSShhDDDA.....",
+    ".....AdddhhSSSSSSSSShhdddA......",
+    "......AddddhhhssshhhddddA.......",
+    ".......AddDDDDRRRRDDDDdA........",
+    ".....AADDDDDDRGGGGRDDDDDAA......",
+    "....AdddLLLLDDRRRRDDLLLLddAA....",
+    "....AdddLLLLDDDDDDDDLLLLdddA....",
+    "...AddddDTTTTTRRRRTTTTTDdddA....",
+    "...ADTTTDTTTTTRRRRTTTTTDTTTA....",
+    "..ADDTTTDDDDDDDDDDDDDDDDTTTDA...",
+    "..AAAAAAADDDDDDAADDDDDDAAAAAA..."
   ];
-  var GIRL_BUN = [
-    ".....HH.....",
-    "....HHHH....",
-    "...HHHHHH...",
-    "..HHHHHHHH..",
-    "..HHSSSSHH..",
-    ".HSSSSSSSSH.",
-    ".SSEESSEESS.",
-    ".SPSSSSSSPS.",
-    ".SSSSMMSSSS.",
-    "..SSSSSSSS..",
-    "...DDDDDD...",
-    "..DDDDDDDD..",
-    "..DDDDDDDD..",
-    "...DDDDDD..."
+
+  var CH_BODY_BUN = [
+    "............AAAAAAA.............",
+    "...........AhhhhhhhA............",
+    "...........AhhhhhhhA............",
+    "...........AhhhhhhhA............",
+    "..........ALhhhhhhhLA...........",
+    "........AALLLhhhhhLLLAA.........",
+    ".......ALLLLLLLLLLLLLLLA........",
+    "......ALLLLLLLLLLLLLLLLLA.......",
+    ".....ALLLLLJJJJJJJJJLLLLLA......",
+    "....ALLLLJJJJJJJJJJJJJLLLLA.....",
+    "....ALLLJJJJJJJJJJJJJJJLLLA.....",
+    "...ALLLHHHHHHHHHHHHHHHHHLLLA....",
+    "...ADDHHHHHHHHHHHHHHHHHHHDDA....",
+    "..ADDHHHHHHHHHHHHHHHHHHHHHDDA...",
+    "..ADDHHHHHHHSSSSSSSHHHHHHHDDA...",
+    "..ADDHHHHHSSSSSSSSSSSHHHHHDDA...",
+    "..ADHHHHHSSSSSSSSSSSSSHHHHHDA...",
+    "..ADHHHHSSSSSSSSSSSSSSSHHHHDA...",
+    "..ADHHHHSSAAAASSSSAAAASHHHHDA...",
+    "..ADDHHHSAEEIIASSAEEIIAHHHDDA...",
+    "..ADDHHHSAEIIIASSAEIIIAHHHDDA...",
+    "...ADHHHSAIIIIASSAIIIIAHHHDA....",
+    "...ADDHHSSAAAASSSSAAAASHHDDA....",
+    "....ADDHHPPPSSSSSSSSPPPHDDA.....",
+    "....ADDDhhSSSSSMMSSSShhDDDA.....",
+    ".....AdddhhSSSSSSSSShhdddA......",
+    "......AddddhhhssshhhddddA.......",
+    ".......AddDDDDRRRRDDDDdA........",
+    ".....AADDDDDDRGGGGRDDDDDAA......",
+    "....AdddLLLLDDRRRRDDLLLLddAA....",
+    "....AdddLLLLDDDDDDDDLLLLdddA....",
+    "...AddddDTTTTTRRRRTTTTTDdddA....",
+    "...ADTTTDTTTTTRRRRTTTTTDTTTA....",
+    "..ADDTTTDDDDDDDDDDDDDDDDTTTDA...",
+    "..AAAAAAADDDDDDAADDDDDDAAAAAA..."
   ];
-  // legs: bare calf -> white sock -> small dark shoe (reads as a real step)
-  var LEGS_A = [
-    "..LL....LL..",
-    "..LL....LL..",
-    "..WW....WW..",
-    "..KK....KK.."
+
+  var CH_LEGS_A = [
+    ".........ANNNNA..ANNNNA.........",
+    ".........ANNNNA..ANNNNA.........",
+    ".........ANNNNA..ANNNNA.........",
+    ".........ANNNNA..ANNNNA.........",
+    "........ATTTTA....ATTTTA........",
+    "........ATTTTA....ATTTTA........",
+    "........AAAAAA....AAAAAA........"
   ];
-  var LEGS_B = [
-    "...LL..LL...",
-    "...LL..LL...",
-    "...WW..WW...",
-    "...KK..KK..."
-  ];
-  var CAT = [
-    "..O......O..",
-    "..OO....OO..",
-    "..OPO..OPO..",
-    "..OOOOOOOO..",
-    "..OEEOOEEO..",
-    "..POOMMOOP..",
-    "..OOOOOOOO..",
-    ".OOOOOOOOOO.",
-    ".OOOCCCCOOO.",
-    ".OOCCCCCCOO.",
-    ".OOOOOOOOOO.",
-    "..OOOOOOOO.."
-  ];
-  // cat paws: soft pink toe beans
-  var CLEGS_A = [
-    "...OO..OO...",
-    "...PP..PP..."
-  ];
-  var CLEGS_B = [
-    "..OO....OO..",
-    "..PP....PP.."
-  ];
-  var BUNNY_TOP = [
-    "..C......C..",
-    "..CC....CC..",
-    "..CPC..CPC..",
-    "..CPC..CPC..",
-    "..CCCCCCCC..",
-    "..CEECCEEC..",
-    "..CPCCCCPC..",
-    "..CCCMMCCC..",
-    "..CCCCCCCC..",
-    "...CCCCCC...",
-    "..CCCCCCCC..",
-    "..CCCCCCCC..",
-    "...CCCCCC..."
-  ];
-  var BUNNY_SMALL = [
-    "..C......C..",
-    "..CC....CC..",
-    "..CPC..CPC..",
-    "..CCCCCCCC..",
-    "..CEECCEEC..",
-    "..CPCCCCPC..",
-    "..CCCMMCCC..",
-    "..CCCCCCCC..",
-    "...CCCCCC..."
-  ];
-  // bunny feet: soft pink toe beans instead of shoes
-  var BLEGS_A = [
-    "..CC....CC..",
-    "..CC....CC..",
-    "..PP....PP..",
-    "..PP....PP.."
-  ];
-  var BLEGS_B = [
-    "...CC..CC...",
-    "...CC..CC...",
-    "...PP..PP...",
-    "...PP..PP..."
-  ];
-  var ROBOT_TOP = [
-    ".....GG.....",
-    ".....AA.....",
-    "..RRRRRRRR..",
-    "..RRVVVVRR..",
-    "..RVVGGVVR..",
-    "..RVVVVVVR..",
-    "..RRPRRPRR..",
-    "..RRRRRRRR..",
-    "...RRRRRR...",
-    "..RRRRRRRR..",
-    "..RRR..RRR..",
-    "..RRRRRRRR..",
-    "...RRRRRR..."
-  ];
-  var RLEGS_A = [
-    "..RR....RR..",
-    "..RR....RR..",
-    ".KKK....KKK."
-  ];
-  var RLEGS_B = [
-    "...RR..RR...",
-    "...RR..RR...",
-    "..KKK..KKK.."
+
+  var CH_LEGS_B = [
+    "..........ANNNNA..ANNNNA........",
+    "..........ANNNNA..ANNNNA........",
+    "..........ANNNNA..ANNNNA........",
+    "..........ANNNNA..ANNNNA........",
+    ".........ATTTTA....ATTTTA.......",
+    ".........ATTTTA....ATTTTA.......",
+    ".........AAAAAA....AAAAAA......."
   ];
 
   // ---- emotes that pop above a character's head ----
@@ -248,28 +244,45 @@
     return [top.concat(legsA), top.concat(legsB)];
   }
 
+  function shade(c, k) {
+    return [
+      Math.max(0, Math.min(255, Math.round(c[0] + 255 * k))),
+      Math.max(0, Math.min(255, Math.round(c[1] + 255 * k))),
+      Math.max(0, Math.min(255, Math.round(c[2] + 255 * k)))
+    ];
+  }
+
+  // hair / cloth are the mid tones; dark and light are derived from them
+  function tintOf(hair, cloth) {
+    return {
+      h: shade(hair, -0.12), H: hair, J: shade(hair, 0.14),
+      d: shade(cloth, -0.10), D: cloth, L: shade(cloth, 0.13)
+    };
+  }
+
   function initCharacters() {
-    // left-to-right lineup; each character gets its own hair / outfit tint
+    // six adventurers, left to right; each gets its own hair + outfit tint
     var defs = [
-      { top: GIRL_LONG,   la: LEGS_A,  lb: LEGS_B,  tint: { H: [122, 162, 214], D: [188, 214, 236] } },
-      { top: GIRL_SHORT,  la: LEGS_A,  lb: LEGS_B,  tint: { H: [206, 146, 112], D: [238, 186, 146] } },
-      { top: GIRL_BUN,    la: LEGS_A,  lb: LEGS_B,  tint: { H: [176, 142, 198], D: [216, 192, 236] } },
-      { top: CAT,         la: CLEGS_A, lb: CLEGS_B, tint: null },
-      { top: BUNNY_TOP,   la: BLEGS_A, lb: BLEGS_B, tint: null },
-      { top: GIRL_LONG,   la: LEGS_A,  lb: LEGS_B,  tint: { H: [226, 182, 126], D: [246, 244, 238] } },
-      { top: BUNNY_SMALL, la: BLEGS_A, lb: BLEGS_B, tint: null },
-      { top: BUNNY_TOP,   la: BLEGS_A, lb: BLEGS_B, tint: { C: [234, 228, 246] } },
-      { top: ROBOT_TOP,   la: RLEGS_A, lb: RLEGS_B, tint: null },
-      { top: ROBOT_TOP,   la: RLEGS_A, lb: RLEGS_B, tint: { R: [208, 184, 202], V: [72, 62, 92] } }
+      { body: CH_BODY_CAT,   tint: tintOf([104,  72,  52], [124, 156,  92]) },  // brown / green
+      { body: CH_BODY_BUNNY, tint: tintOf([ 62,  84, 130], [ 74, 112, 168]) },  // blue / blue
+      { body: CH_BODY_BUN,   tint: tintOf([104,  72, 128], [120,  92, 156]) },  // violet / violet
+      { body: CH_BODY_CAT,   tint: tintOf([178, 132,  56], [176,  92,  80]) },  // blond / red
+      { body: CH_BODY_BUNNY, tint: tintOf([186, 112, 132], [196, 134, 154]) },  // pink / pink
+      { body: CH_BODY_BUN,   tint: tintOf([104, 108, 120], [ 88, 146, 148]) },  // grey / teal
+      { body: CH_BODY_CAT,   tint: tintOf([ 58,  66,  86], [ 82, 100, 146]) },  // ink / navy
+      { body: CH_BODY_BUNNY, tint: tintOf([186, 118,  62], [200, 140,  78]) }   // ginger / orange
     ];
     characters = [];
     var n = defs.length;
-    var left = sceneW * 0.08, right = sceneW * 0.92;
+    var left = sceneW * 0.07, right = sceneW * 0.93;
     for (var i = 0; i < n; i++) {
       var d = defs[i];
       characters.push({
         cx: left + (right - left) * (n === 1 ? 0.5 : i / (n - 1)),
-        frames: buildFrames(d.top, d.la, d.lb),
+        frames: [
+          d.body.concat(CH_LEGS_A),
+          d.body.concat(CH_LEGS_B)
+        ],
         tint: d.tint,
         phase: i * 0.7,
         // emote: idle countdown, then a short heart / sparkle float
@@ -305,7 +318,7 @@
     var yTop = y - rows + 1;
 
     // soft contact shadow, narrower while the body bobs up
-    var sw = w - (bob ? 5 : 3);
+    var sw = w - (bob ? 12 : 8);
     octx.fillStyle = css([0, 0, 0], 0.12 * (1 - night * 0.5));
     octx.fillRect(Math.round(ch.cx - sw / 2), footY + 1, sw, 1);
 
@@ -366,7 +379,7 @@
   /* ---------- entity init (on resize) ---------- */
   function initEntities() {
     stars = [];
-    var starCount = Math.min(110, Math.round(sceneW * sceneH / 1100));
+    var starCount = Math.min(240, Math.round(sceneW * sceneH / 1100));
     for (var i = 0; i < starCount; i++) {
       stars.push({
         x: rand(0, sceneW),
@@ -379,10 +392,10 @@
       });
     }
     clouds = [];
-    var cloudCount = Math.max(4, Math.round(sceneW / 58));
+    var cloudCount = Math.max(4, Math.round(sceneW / 120));
     for (var c = 0; c < cloudCount; c++) {
       var depth = rand(0.35, 1);              // smaller = farther away
-      var w = rand(34, 60) * depth + 18;
+      var w = rand(38, 62) * depth + 18;
       var puffs = [];
       var n = 4 + Math.floor(Math.random() * 3);
       for (var p = 0; p < n; p++) {
@@ -394,7 +407,7 @@
       }
       clouds.push({
         x: rand(-w, sceneW + w),
-        y: rand(sceneH * 0.06, sceneH * 0.38),
+        y: rand(sceneH * 0.05, sceneH * 0.30),
         w: w,
         depth: depth,
         speed: rand(1.5, 4.5) * depth,
@@ -402,7 +415,7 @@
       });
     }
     fireflies = [];
-    for (var f = 0; f < 9; f++) {
+    for (var f = 0; f < 16; f++) {
       fireflies.push({
         x: rand(0, sceneW),
         y: rand(sceneH * 0.55, sceneH * 0.82),
@@ -532,7 +545,7 @@
     // wind-swayed blade silhouette
     for (var x = 0; x < sceneW; x++) {
       var nse = Math.sin(x * 0.31) * 1.6 + Math.sin(x * 0.11 + 1.7) * 2.2;
-      var h = 2 + Math.round(Math.abs(nse));
+      var h = 3 + Math.round(Math.abs(nse) * 1.7);
       var sway = Math.round(Math.sin(t * 1.4 + x * 0.09) * 1.2);
       octx.fillStyle = css(blade);
       octx.fillRect(x + sway, top - h, 1, h);
@@ -553,7 +566,7 @@
     }
     // tiny flowers (scroll with the ground)
     var flower = lerp3(DAY.flower, NIGHT.flower, night);
-    for (var f = 0; f < 14; f++) {
+    for (var f = 0; f < 26; f++) {
       var fx = Math.round((f * 61 + 17 - goff) % sceneW); if (fx < 0) fx += sceneW;
       var fy = top - 2 - ((f * 29) % Math.max(1, Math.round(bandH * 0.3)));
       octx.fillStyle = css(flower, 0.55 + 0.45 * (1 - night));
