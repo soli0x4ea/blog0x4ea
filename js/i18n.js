@@ -30,6 +30,17 @@
       'hero.stat1': '在维护项目',
       'hero.stat2': '开源框架',
       'hero.stat3': '离线优先',
+      /* 3D 缸的互动按钮（由 hero-terrarium.js 接管） */
+      'hero.feed': '投喂',
+      'hero.feedAria': '投喂一只蟋蟀',
+      'hero.color': '变色',
+      'hero.colorAria': '给变色龙换一种体色',
+      'hero.colorTitle': '变色 · 当前：{c}',
+      'hero.colorName.jade': '翡翠',
+      'hero.colorName.ocean': '海蓝',
+      'hero.colorName.lemon': '柠檬',
+      'hero.colorName.coral': '珊瑚',
+      'hero.colorName.grape': '葡萄',
 
       /* ---- download ---- */
       'dl.title': '下载',
@@ -113,6 +124,17 @@
       'hero.stat1': 'Active projects',
       'hero.stat2': 'Open-source frameworks',
       'hero.stat3': 'Offline first',
+      /* terrarium controls (wired up by hero-terrarium.js) */
+      'hero.feed': 'Feed',
+      'hero.feedAria': 'Drop a cricket',
+      'hero.color': 'Color',
+      'hero.colorAria': 'Change the chameleon color',
+      'hero.colorTitle': 'Color · now {c}',
+      'hero.colorName.jade': 'Jade',
+      'hero.colorName.ocean': 'Ocean',
+      'hero.colorName.lemon': 'Lemon',
+      'hero.colorName.coral': 'Coral',
+      'hero.colorName.grape': 'Grape',
 
       /* ---- download ---- */
       'dl.title': 'Download',

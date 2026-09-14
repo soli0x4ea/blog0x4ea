@@ -2,7 +2,7 @@
 .DS_Store
 
 # Hero leftovers: unused background-image assets superseded by the
-# pure-canvas renderer in js/hero-scene.js
+# WebGL renderer in js/hero-terrarium.js
 images/hero-base.jpg
 images/hero-clouds-left.png
 images/hero-clouds-right.png

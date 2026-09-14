@@ -10,6 +10,10 @@
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230066cc'/%3E%3Ctext x='16' y='21' font-family='-apple-system,Helvetica,Arial' font-size='13' font-weight='700' fill='white' text-anchor='middle'%3E0x%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="css/styles.css" />
+  <!-- three.js 本地托管（不走 CDN，保持离线优先 / 隐私优先） -->
+  <script type="importmap">
+    { "imports": { "three": "./js/vendor/three.module.min.js" } }
+  </script>
 </head>
 <body>
   <!-- ===== Navigation ===== -->
@@ -58,6 +62,17 @@
         <div class="hero__cta reveal">
           <a class="btn btn--primary" href="#projects" data-i18n="hero.ctaProjects">浏览项目</a>
           <a class="btn btn--ghost" href="https://github.com/soli0x4ea" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <!-- 3D 缸的互动按钮。默认 hidden，等场景真正跑起来再由
+             hero-terrarium.js 显示，WebGL 不可用时不会留下死按钮。 -->
+        <div class="hero__play reveal" id="heroPlay" hidden>
+          <button class="play-btn" id="heroFeed" type="button" data-i18n-aria="hero.feedAria">
+            <span class="play-btn__ico" aria-hidden="true">🦗</span><span data-i18n="hero.feed">投喂</span>
+          </button>
+          <button class="play-btn" id="heroColor" type="button" data-i18n-aria="hero.colorAria">
+            <span class="play-btn__ico" aria-hidden="true">🎨</span><span data-i18n="hero.color">变色</span>
+            <span class="play-btn__swatch" id="heroColorSwatch" aria-hidden="true"></span>
+          </button>
         </div>
         <ul class="hero__stats reveal" aria-label="概览数据">
           <li><strong>8+</strong><span data-i18n="hero.stat1">在维护项目</span></li>
@@ -351,7 +366,7 @@
     </div>
   </footer>
 
-  <script src="js/hero-scene.js"></script>
+  <script type="module" src="js/hero-terrarium.js"></script>
   <script src="js/i18n-core.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>

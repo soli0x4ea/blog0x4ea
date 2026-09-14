@@ -151,22 +151,28 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
 }
 .hero__canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  display: block;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+  cursor: grab;
+  touch-action: pan-y;            /* 保留竖向滚动，只有横向拖拽才旋转视角 */
 }
+.hero__canvas:active { cursor: grabbing; }
 .hero__inner {
   position: relative;
   z-index: 2;
   max-width: 860px;
   margin: 0 auto;
+  /* 让指针事件穿透到 3D 缸（否则容器会挡住右侧的拖拽 / 投喂） */
+  pointer-events: none;
 }
+.hero__inner .btn { pointer-events: auto; }
 .eyebrow {
   font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
@@ -203,6 +209,44 @@ a { color: inherit; text-decoration: none; }
 .btn--ghost { border: 1px solid var(--border-strong); color: var(--text); }
 .btn--ghost:hover { background: var(--card-2); }
 .btn:active { transform: scale(0.97); }
+
+/* ---- 3D 缸的互动按钮：投喂 / 变色 ---- */
+.hero__play {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 20px;
+  /* 容器不接管指针，否则会挡住 3D 缸的拖拽与点击投喂 */
+  pointer-events: none;
+}
+.hero__play[hidden] { display: none; }
+.play-btn {
+  pointer-events: auto;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border-radius: 980px;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.5);
+  color: #1d1d1f;
+  font: inherit; font-size: 14px; font-weight: 500; line-height: 1;
+  cursor: pointer;
+  transition: color 0.6s var(--ease), border-color 0.6s var(--ease),
+              background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.play-btn:hover { background: rgba(0, 0, 0, 0.07); }
+.play-btn:active { transform: scale(0.96); }
+.play-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.play-btn__ico { font-size: 15px; line-height: 1; }
+.play-btn__swatch {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #6fd44a;                                    /* 与 PALETTE[0] 同步，JS 会改写 */
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  transition: background 0.35s var(--ease);
+}
+[data-theme="dark"] .hero__play .play-btn {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5f5f7;
+}
+[data-theme="dark"] .hero__play .play-btn:hover { background: rgba(255, 255, 255, 0.12); }
+[data-theme="dark"] .hero__play .play-btn__swatch { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28); }
 
 .hero__stats {
   list-style: none; display: flex; gap: clamp(24px, 6vw, 64px);
@@ -331,6 +375,32 @@ a { color: inherit; text-decoration: none; }
 .bento .card.reveal.is-visible { transform: none; }
 
 /* ===== Responsive ===== */
+
+/* ---- Hero + 3D 缸：宽屏两栏（文字在左、缸在右），窄屏上下排布 ----
+   断点需与 js/hero-terrarium.js 中的 frameSubject() 保持一致 */
+@media (min-width: 901px) {
+  .hero { padding-left: 0; padding-right: 0; text-align: left; }
+  .hero__inner {
+    width: 100%;
+    max-width: 1200px;              /* 与导航容器对齐 */
+    margin: 0 auto;
+    padding-left: 22px;
+    padding-right: 54%;             /* 右侧留给 3D 缸 */
+    text-align: left;
+  }
+  .hero__cta,
+  .hero__play,
+  .hero__stats { justify-content: flex-start; }
+}
+@media (max-width: 900px) {
+  .hero {
+    min-height: 94vh;
+    min-height: 94svh;
+    align-items: flex-start;        /* 文字在上，缸在下半部 */
+    padding-top: clamp(40px, 7vh, 76px);
+  }
+}
+
 @media (min-width: 641px) {
   .nav__mobile { display: none !important; }
 }
