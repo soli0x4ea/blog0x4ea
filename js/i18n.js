@@ -85,6 +85,7 @@
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · 离线优先，隐私优先',
+      'ft.privacy': '隐私政策',
       'ft.github': 'GitHub'
     },
 
@@ -167,6 +168,7 @@
 
       /* ---- footer ---- */
       'ft.copy': '© 2026 0x4ea · Offline first, privacy first',
+      'ft.privacy': 'Privacy Policy',
       'ft.github': 'GitHub'
     }
   };
