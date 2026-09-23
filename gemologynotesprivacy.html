@@ -65,21 +65,17 @@
     border-radius: 20px;
     margin-bottom: 20px;
   }
-  .divider { border: none; border-top: 1px dashed #d0d7de; margin: 48px 0; }
   /* Language modes */
-  body.mode-zh .en-version,
-  body.mode-zh .divider { display: none; }
-  body.mode-en .zh-version,
-  body.mode-en .divider { display: none; }
+  body.mode-zh .en-version { display: none; }
+  body.mode-en .zh-version { display: none; }
 </style>
 </head>
-<body class="mode-both">
+<body class="mode-zh">
 <div class="container">
 
   <div class="lang-switch">
-    <button data-mode="zh" onclick="setMode('zh')">中文</button>
+    <button data-mode="zh" class="active" onclick="setMode('zh')">中文</button>
     <button data-mode="en" onclick="setMode('en')">EN</button>
-    <button data-mode="both" class="active" onclick="setMode('both')">双语</button>
   </div>
 
   <!-- ===== 中文版 ===== -->
@@ -123,8 +119,6 @@
       &copy; 2026 系统宝石学笔记
     </div>
   </section>
-
-  <hr class="divider">
 
   <!-- ===== English Version ===== -->
   <section class="en-version">
