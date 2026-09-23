@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>系统宝石学笔记 - 隐私政策</title>
+<title>系统宝石学笔记 - 隐私政策 / System Gemology Notes — Privacy Policy</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -21,6 +21,28 @@
     padding: 40px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
+  .lang-switch {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  .lang-switch button {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 6px 14px;
+    border: 1px solid #d0d7de;
+    background: #f6f8fa;
+    color: #555;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .lang-switch button.active {
+    background: #4a90d9;
+    border-color: #4a90d9;
+    color: #fff;
+  }
   h1 { font-size: 24px; color: #1a1a1a; margin-bottom: 8px; }
   .subtitle { color: #888; font-size: 14px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #eee; }
   h2 { font-size: 18px; color: #2a2a2a; margin-top: 28px; margin-bottom: 12px; }
@@ -32,47 +54,78 @@
   .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 13px; text-align: center; }
   .contact { background: #f9fafb; padding: 20px; border-radius: 8px; margin-top: 16px; }
   .contact p { margin: 4px 0; }
+  /* English text is de-emphasized so the page reads naturally in either language */
+  .en { color: #888; font-size: 14px; }
+  h2 .en { display: block; font-size: 14px; color: #999; margin-top: 2px; }
+  .highlight .en { color: #666; }
+  /* Language modes */
+  body.mode-zh .en { display: none; }
+  body.mode-en .zh { display: none; }
+  body.mode-en .en { color: #555; font-size: 15px; }
+  body.mode-en h2 .en { color: #2a2a2a; font-size: 18px; }
+  body.mode-en .highlight .en { color: #333; }
 </style>
 </head>
-<body>
+<body class="mode-both">
 <div class="container">
-  <h1>系统宝石学笔记 隐私政策</h1>
-  <div class="subtitle">最后更新日期：2026年8月4日</div>
-  <div class="highlight">
-    <p><strong>核心声明：本 App 不收集、不存储、不上传任何用户个人数据。</strong></p>
+  <div class="lang-switch">
+    <button data-mode="zh" onclick="setMode('zh')">中文</button>
+    <button data-mode="en" onclick="setMode('en')">EN</button>
+    <button data-mode="both" class="active" onclick="setMode('both')">双语</button>
   </div>
-  <h2>1. 信息收集</h2>
-  <p>系统宝石学笔记是一款纯离线工具类应用。我们郑重声明：</p>
+  <h1><span class="zh">系统宝石学笔记 隐私政策</span><span class="en">System Gemology Notes — Privacy Policy</span></h1>
+  <div class="subtitle"><span class="zh">最后更新日期：2026年8月4日</span><span class="en">Last updated: August 4, 2026</span></div>
+  <div class="highlight">
+    <p class="zh"><strong>核心声明：本 App 不收集、不存储、不上传任何用户个人数据。</strong></p>
+    <p class="en"><strong>Core Statement: This App does not collect, store, or upload any user personal data.</strong></p>
+  </div>
+  <h2><span class="zh">1. 信息收集</span><span class="en">1. Information Collection</span></h2>
+  <p class="zh">系统宝石学笔记是一款纯离线工具类应用。我们郑重声明：</p>
+  <p class="en">System Gemology Notes is a fully offline utility application. We solemnly state:</p>
   <ul>
-    <li>我们不收集您的任何个人身份信息</li>
-    <li>我们不收集您的位置信息</li>
-    <li>我们不收集您的设备信息</li>
-    <li>我们不使用任何第三方分析工具</li>
-    <li>我们不植入任何广告追踪 SDK</li>
+    <li><span class="zh">我们不收集您的任何个人身份信息</span><span class="en">We do not collect any of your personally identifiable information</span></li>
+    <li><span class="zh">我们不收集您的位置信息</span><span class="en">We do not collect your location information</span></li>
+    <li><span class="zh">我们不收集您的设备信息</span><span class="en">We do not collect your device information</span></li>
+    <li><span class="zh">我们不使用任何第三方分析工具</span><span class="en">We do not use any third-party analytics tools</span></li>
+    <li><span class="zh">我们不植入任何广告追踪 SDK</span><span class="en">We do not embed any advertising or tracking SDKs</span></li>
   </ul>
-  <h2>2. 数据存储</h2>
-  <p>App 内的所有学习内容和 3D 模型数据均预置在应用本地，运行过程中：</p>
+  <h2><span class="zh">2. 数据存储</span><span class="en">2. Data Storage</span></h2>
+  <p class="zh">App 内的所有学习内容和 3D 模型数据均预置在应用本地，运行过程中：</p>
+  <p class="en">All learning content and 3D model data within the App are preloaded locally on the device. During operation:</p>
   <ul>
-    <li>所有数据仅存储在您的设备本地</li>
-    <li>不会向任何服务器上传数据</li>
-    <li>不会与任何第三方共享数据</li>
+    <li><span class="zh">所有数据仅存储在您的设备本地</span><span class="en">All data is stored only on your local device</span></li>
+    <li><span class="zh">不会向任何服务器上传数据</span><span class="en">No data is uploaded to any server</span></li>
+    <li><span class="zh">不会与任何第三方共享数据</span><span class="en">No data is shared with any third party</span></li>
   </ul>
-  <h2>3. 网络使用</h2>
-  <p>本 App 完全离线运行，不需要联网即可使用全部功能。App 不会主动发起任何网络请求。</p>
-  <h2>4. 儿童隐私</h2>
-  <p>本 App 适合所有年龄段使用，不针对儿童收集任何个人信息。</p>
-  <h2>5. 您的权利</h2>
-  <p>由于我们不收集任何用户数据，您无需行使数据访问、更正或删除的权利。删除 App 即可移除所有本地数据。</p>
-  <h2>6. 政策更新</h2>
-  <p>如未来 App 功能发生变化涉及隐私相关内容，我们会及时更新本隐私政策，并在 App 内通知您。</p>
-  <h2>7. 联系我们</h2>
+  <h2><span class="zh">3. 网络使用</span><span class="en">3. Network Usage</span></h2>
+  <p class="zh">本 App 完全离线运行，不需要联网即可使用全部功能。App 不会主动发起任何网络请求。</p>
+  <p class="en">This App runs completely offline and requires no internet connection to use all of its features. The App does not initiate any network requests.</p>
+  <h2><span class="zh">4. 儿童隐私</span><span class="en">4. Children's Privacy</span></h2>
+  <p class="zh">本 App 适合所有年龄段使用，不针对儿童收集任何个人信息。</p>
+  <p class="en">This App is suitable for users of all ages and does not collect any personal information from children.</p>
+  <h2><span class="zh">5. 您的权利</span><span class="en">5. Your Rights</span></h2>
+  <p class="zh">由于我们不收集任何用户数据，您无需行使数据访问、更正或删除的权利。删除 App 即可移除所有本地数据。</p>
+  <p class="en">Since we do not collect any user data, you have no need to exercise rights of data access, correction, or deletion. Deleting the App removes all local data.</p>
+  <h2><span class="zh">6. 政策更新</span><span class="en">6. Policy Updates</span></h2>
+  <p class="zh">如未来 App 功能发生变化涉及隐私相关内容，我们会及时更新本隐私政策，并在 App 内通知您。</p>
+  <p class="en">If future App functionality changes involve privacy-related matters, we will promptly update this Privacy Policy and notify you within the App.</p>
+  <h2><span class="zh">7. 联系我们</span><span class="en">7. Contact Us</span></h2>
   <div class="contact">
-    <p>如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：</p>
-    <p><strong>邮箱：</strong>issue@0x4ea.com</p>
+    <p class="zh">如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：</p>
+    <p class="en">If you have any questions or suggestions about this Privacy Policy, please contact us through the following:</p>
+    <p><span class="zh"><strong>邮箱：</strong>issue@0x4ea.com</span><span class="en"><strong>Email:</strong> issue@0x4ea.com</span></p>
   </div>
   <div class="footer">
-    &copy; 2026 系统宝石学笔记
+    <span class="zh">&copy; 2026 系统宝石学笔记</span><span class="en">&copy; 2026 System Gemology Notes</span>
   </div>
 </div>
+<script>
+  function setMode(mode) {
+    document.body.className = 'mode-' + mode;
+    document.querySelectorAll('.lang-switch button').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.mode === mode);
+    });
+  }
+</script>
 </body>
 </html>
