@@ -1,76 +1,339 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>山海异兽录隐私政策 · 0x4ea</title>
-  <meta name="description" content="山海异兽录（Shanhai Arena）隐私政策：纯本地离线卡牌对战与模拟工具，不收集任何个人数据。" />
-  <style>
-    :root { --blue:#0066cc; --ink:#1d1d1f; --muted:#6e6e73; --line:#e5e5ea; --bg:#fff; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; }
-    .wrap { max-width:760px; margin:0 auto; padding:44px 24px 80px; }
-    header.top { border-bottom:1px solid var(--line); padding-bottom:18px; margin-bottom:28px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
-    .brand { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--blue); text-decoration:none; font-size:16px; }
-    .brand .mark { width:22px; height:22px; border-radius:6px; background:var(--blue); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
-    h1 { font-size:30px; margin:22px 0 6px; letter-spacing:-0.02em; }
-    .meta { color:var(--muted); font-size:14px; margin-bottom:28px; }
-    h2 { font-size:20px; margin:34px 0 10px; letter-spacing:-0.01em; }
-    p { margin:12px 0; }
-    ul { padding-left:22px; }
-    li { margin:6px 0; }
-    .warn { background:#fff8e6; border:1px solid #ffe08a; border-radius:10px; padding:14px 16px; font-size:14px; color:#7a5b00; margin:20px 0; }
-    a { color:var(--blue); }
-    code { background:#f2f2f7; padding:1px 6px; border-radius:5px; font-size:13px; }
-    footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
-    .sec { border-top:1px solid var(--line); margin-top:36px; padding-top:8px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>运动山海（ShanhaiSport）隐私政策 · Shanhai Sport Privacy Policy</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    line-height: 1.75; color: #2c2c2a; background: #faf9f5;
+    max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem;
+  }
+  header { border-bottom: 2px solid #d3d1c7; padding-bottom: 1.25rem; margin-bottom: 1.5rem; }
+  h1 { font-size: 1.5rem; font-weight: 600; margin: 0 0 .5rem; }
+  .sub { color: #5f5e5a; font-size: .95rem; margin: 0; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin: 2.25rem 0 .75rem; padding-bottom: .35rem; border-bottom: 1px solid #e6e4dc; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 .5rem; }
+  p, li { font-size: .95rem; }
+  ul { padding-left: 1.35rem; }
+  li { margin: .3rem 0; }
+  table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .9rem; }
+  th, td { border: 1px solid #d3d1c7; padding: .5rem .6rem; text-align: left; vertical-align: top; }
+  th { background: #f1efe8; font-weight: 600; }
+  .tag { display: inline-block; font-size: .78rem; padding: .1rem .45rem; border-radius: .25rem; border: 1px solid; white-space: nowrap; }
+  .local { color: #0f6e56; border-color: #5dcaa5; background: #e1f5ee; }
+  .device { color: #185fa5; border-color: #85b7eb; background: #e6f1fb; }
+  .note { background: #faf6e8; border-left: 3px solid #ba7517; padding: .75rem 1rem; margin: 1rem 0; font-size: .9rem; border-radius: 0 .25rem .25rem 0; }
+  .lang-switch { margin: .5rem 0 0; font-size: .9rem; }
+  .lang-switch a { color: #185fa5; }
+  code { background: #f1efe8; padding: .1rem .3rem; border-radius: .2rem; font-size: .85em; }
+  footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid #d3d1c7; color: #5f5e5a; font-size: .9rem; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a18; color: #e8e6df; }
+    header { border-bottom-color: #444441; }
+    h2 { border-bottom-color: #38373a; }
+    th { background: #2a2a27; }
+    th, td { border-color: #444441; }
+    .sub, .note, footer { color: #a8a69e; }
+    .note { background: #2a2418; }
+    .local { color: #9fe1cb; border-color: #1d9e75; background: #14312a; }
+    .device { color: #b5d4f4; border-color: #378add; background: #16283a; }
+    code { background: #2a2a27; }
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="top">
-      <a class="brand" href="/"><span class="mark">0x</span><span>0x4ea</span></a>
-    </header>
 
-    <h1>山海异兽录隐私政策 · Shanhai Arena Privacy Policy</h1>
-    <div class="meta">生效日期 / Last updated：2026-09-16</div>
-    <p>本页面提供中文与 English 两个版本，内容完全一致。 / This page is provided in both Chinese and English; the two versions are identical in substance.</p>
+<header>
+  <h1>运动山海（ShanhaiSport）隐私政策</h1>
+  <p class="sub">生效日期：2026-10-05　·　Shanhai Sport Privacy Policy · Effective 2026-10-05</p>
+  <p class="lang-switch">中文 · <a href="#en">English</a></p>
+</header>
 
-    <section class="sec" lang="zh-CN">
-      <h2>中文</h2>
-      <p><strong>山海异兽录（Shanhai Arena）尊重并保护用户隐私。本 App 不收集、不存储、不传输任何个人数据：</strong></p>
-      <ul>
-        <li>不含分析统计、广告追踪或崩溃上报 SDK；</li>
-        <li>不发起任何网络请求，全部战斗计算与批量模拟均在设备本地完成；</li>
-        <li>无账号体系，不读取设备标识符、位置、通讯录、相册、麦克风或相机；</li>
-        <li>不接入任何第三方 SDK，全部代码仅依赖 Apple 系统框架（Foundation、SwiftUI）；</li>
-        <li>不申请任何系统权限，因此使用过程中不会出现任何权限弹窗；</li>
-        <li>不写入任何持久化数据 —— 编队、随机种子与战斗记录仅存在于运行内存中，退出 App 即全部消失；</li>
-        <li>无内购、无广告、无社交或分享功能。</li>
-      </ul>
-      <p>由于不收集任何信息，我们没有任何数据可供使用、分析、共享或出售。</p>
-      <p>若日后版本变更数据处理方式，我们将在本页面更新说明。</p>
-      <p>联系：<a href="mailto:issue@0x4ea.com">issue@0x4ea.com</a>（隐私政策页面：<a href="https://0x4ea.com/shanhaiarenaprivacy.html">https://0x4ea.com/shanhaiarenaprivacy.html</a>）。</p>
-    </section>
+<p><strong>运动山海（ShanhaiSport，以下简称「本 App」）尊重并保护你的隐私。</strong>
+本 App 是一个单机离线游戏，<strong>不收集、不上传、不共享任何个人信息</strong>——
+你的游戏进度、位置、身份密钥全部只保存在你的设备上，我们（开发者）无法看到。</p>
 
-    <section class="sec" lang="en">
-      <h2>English</h2>
-      <p><strong>Shanhai Arena respects and protects your privacy. The app does not collect, store, or transmit any personal data:</strong></p>
-      <ul>
-        <li>No analytics, ad tracking, or crash-reporting SDKs;</li>
-        <li>No network requests of any kind — all battle computation and batch simulation run locally on your device;</li>
-        <li>No account system; no access to device identifiers, location, contacts, photos, microphone, or camera;</li>
-        <li>No third-party SDKs embedded; the code depends solely on Apple system frameworks (Foundation, SwiftUI);</li>
-        <li>No system permissions are requested, so no permission prompt ever appears;</li>
-        <li>Nothing is written to persistent storage — lineups, random seeds and battle logs live only in memory and disappear when the app is closed;</li>
-        <li>No in-app purchases, no ads, no social or sharing features.</li>
-      </ul>
-      <p>Because we collect nothing, there is no data for us to use, analyse, share or sell.</p>
-      <p>If a future version changes how data is handled, this page will be updated.</p>
-      <p>Contact: <a href="mailto:issue@0x4ea.com">issue@0x4ea.com</a> (privacy policy page: <a href="https://0x4ea.com/shanhaiarenaprivacy.html">https://0x4ea.com/shanhaiarenaprivacy.html</a>).</p>
-    </section>
+<div class="note">
+  <strong>一句话总结：</strong>本 App 没有账号、没有服务器、没有统计 SDK、广告 SDK 或崩溃上报 SDK，
+  运行期间<strong>不发起任何网络请求</strong>。你唯一「交出去」的东西是内购付款——
+  那笔交易由 Apple 及其账务体系处理，开发者拿不到你的付款信息。
+</div>
 
-    <footer>© 2026 0x4ea · 山海异兽录 / Shanhai Arena</footer>
-  </div>
+<h2>我们收集哪些信息</h2>
+
+<p><strong>我们没有收集任何信息，也没有能力收集。</strong>下面是 App 在你设备上本地处理的数据，
+以及为什么它们不会离开你的设备：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:26%">数据</th>
+      <th style="width:16%">处理方式</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>游戏进度<br>（灵蕴、里程、精怪、卡牌、图鉴、战报等）</td>
+      <td><span class="tag local">仅本机</span></td>
+      <td>以 JSON 存档形式保存在 App 的沙盒 Documents 目录，<strong>不上传</strong>。卸载 App 即随沙盒一并删除。</td>
+    </tr>
+    <tr>
+      <td>设备内生成的玩家身份<br>（Ed25519 密钥对）</td>
+      <td><span class="tag local">仅本机</span></td>
+      <td>私钥保存在 <strong>iOS Keychain</strong>（标记为「仅本设备、首次解锁后可用」，<strong>不参与 iCloud 备份</strong>），公钥随卡牌数据在<strong>点对点直连</strong>时传给对方设备用于验签。私钥永不离开本机、永不上传。</td>
+    </tr>
+    <tr>
+      <td>设备内生成的标识符<br>（16 位随机数）</td>
+      <td><span class="tag local">仅本机</span></td>
+      <td>用于生成地图与遭遇的随机种子，<strong>不是 IDFA / IDFV / 广告标识符</strong>，不用于追踪，也不出设备。</td>
+    </tr>
+    <tr>
+      <td>位置、步数、气压（海拔）</td>
+      <td><span class="tag device">系统权限 · 内存</span></td>
+      <td>经你授权后由 iOS 提供，<strong>只在本机内存中参与</strong>图层投影、物池计算与判位，<strong>不写入存档、不上传、不存储、不用于制作地图</strong>。见下方「权限」。</td>
+    </tr>
+    <tr>
+      <td>内购收据</td>
+      <td><span class="tag device">Apple 账务</span></td>
+      <td>由 Apple 的 StoreKit 处理。App 只从系统读取「是否已解锁」这一个布尔值来自我方服务器校验，<strong>不接触你的付款方式、姓名、账单地址</strong>。开发者看不到你的订单。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>由于我们不收集信息，<strong>没有任何数据可供我们使用、分析、共享或出售</strong>，
+也不存在向第三方披露的情形。</p>
+
+<h2>权限用途</h2>
+
+<p>本 App 仅在下列情形请求系统权限，<strong>每一项都在弹窗里说明了「只在本机使用、不上传」</strong>：</p>
+
+<table>
+  <thead>
+    <tr><th style="width:34%">权限</th><th>用途</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>定位（使用 App 时）</td><td>把你所在位置映到山海图卷上，判断你在哪一格、该格有什么。</td></tr>
+    <tr><td>运动与健身</td><td>读取步数与气压高程，判断你正在行走、奔跑还是静止（影响灵蕴累积与遇敌判定）。</td></tr>
+    <tr><td>蓝牙</td><td>与<strong>附近你自己选择连接的设备</strong>点对点直连，进行切磋、异兽交换与社区见证。不经过任何服务器。</td></tr>
+    <tr><td>本地网络</td><td>发现并直连你主动连接的附近设备。设备之间<strong>点对点直连，不经过我们的服务器</strong>。</td></tr>
+  </tbody>
+</table>
+
+<p>你可以在 <strong>设置 → 隐私与安全性</strong> 中随时撤销这些授权。
+撤销后 App 仍可游玩，只是地图定位、计步与联机功能不可用。
+本 App <strong>没有后台定位</strong>，也<strong>不读取通讯录、相册、麦克风、相机</strong>。</p>
+
+<h2>点对点连接（蓝牙 / 本地网络）</h2>
+
+<p>本 App 的「交换异兽」与「社区见证」功能通过<strong>蓝牙与本地网络在两台设备之间直接通信</strong>。
+这些连接<strong>不经过任何服务器</strong>，因此我们看不到、也收不到任何交换内容。</p>
+
+<p>连接由你<strong>主动发起并逐次确认</strong>：只有在交换页选定了要送出的精怪、并在对方设备上
+看到你的公钥与签名、且双方都确认后，数据才会传输。传输的内容是卡牌数据、公钥与数字签名，
+<strong>不包含你的位置、身份信息或联系方式</strong>。</p>
+
+<p>本 App <strong>未启用「家人共享」</strong>：内购项目在 App Store Connect 中
+设置为不可家庭共享，因此一笔购买只对购买者本人有效。</p>
+
+<h2>数据存储与删除</h2>
+
+<ul>
+  <li><strong>存档</strong>（游戏进度、战报）保存在 App 的沙盒目录中，<strong>不上传</strong>。删除方式：删除本 App，或在 App 内 <strong>设置 → 清档</strong>。</li>
+  <li><strong>战报归档</strong>可单独清空：<strong>储物袋 → 战录 → 清空战录</strong>（需二次确认）。</li>
+  <li><strong>见证台账</strong>可单独清空：<strong>大人之堂 → 见证 → 清空见证记录</strong>（需二次确认）。</li>
+  <li><strong>身份私钥</strong>（Keychain）<strong>刻意不随「清档」删除</strong>——它代表「这台设备上的这个玩家」，删除后会与既有卡牌的验签链脱节。此项只能通过<strong>在系统设置中删除本 App</strong>来清除（Keychain 条目随 App 卸载一并移除）。</li>
+  <li>因为我们不存储任何数据，<strong>卸载本 App 即彻底删除全部数据</strong>，无需另行申请。</li>
+</ul>
+
+<h2>内购</h2>
+
+<p>本 App 含一项<strong>一次性解锁型内购（非消耗型）</strong>，不涉及订阅、自动续期或周期扣款。
+所有付款由 <strong>Apple</strong> 的 StoreKit 处理；我们既不接收也不存储你的付款信息。
+App 内提供「恢复购买」入口，符合 App 审核指南 3.1.1。</p>
+
+<p>内购的解锁状态会以一个布尔标记随存档保存在本机，作为<strong>离线缓存</strong>，
+以便你在无网络时仍能使用已解锁功能。App 启动时会与 App Store 核对一次，
+以确保你的权益在换设备或重装后自动恢复。</p>
+
+<h2>第三方服务</h2>
+
+<p>本 App <strong>不包含任何第三方 SDK</strong>，不集成分析统计、广告追踪或崩溃上报服务。
+代码仅依赖 Apple 系统框架（Foundation、SwiftUI、Core Location、Core Motion、StoreKit、Metal）。
+唯一的第三方服务是 <strong>Apple 的应用内购买支付</strong>，其隐私处理适用 <a href="https://www.apple.com/legal/privacy/">Apple 隐私政策</a>。</p>
+
+<h2>儿童隐私</h2>
+
+<p>本 App 不收集任何个人信息，因此<strong>不面向儿童收集任何个人数据</strong>，
+也不会有意向儿童收集信息。若你是监护人并担心孩子进行了购买，可通过
+<a href="https://support.apple.com/zh-cn/HT204034">Apple 家人共享</a> 或
+设置中的购买限制加以约束。</p>
+
+<h2>本政策的变更</h2>
+
+<p>若未来版本变更数据处理方式（<strong>尤其是新增网络请求、收集数据或接入第三方 SDK</strong>），
+我们会在本页面更新说明，并在 App 内显著位置提示。<strong>本页面内容与 App 的实际行为一致；
+若两者出现不一致，以 App 的实际行为为准，并请向我们反馈。</strong></p>
+
+<h2>联系我们</h2>
+
+<p>如对本隐私政策有任何疑问、意见或发现数据处理与本政策不符的情况，请联系：</p>
+<ul>
+  <li>邮箱：<a href="mailto:issue@0x4ea.com">issue@0x4ea.com</a></li>
+  <li>隐私政策页面：<a href="https://0x4ea.com/shanhaiarenaprivacy.html">https://0x4ea.com/shanhaiarenaprivacy.html</a></li>
+</ul>
+
+<hr>
+
+<h2 id="en">Shanhai Sport Privacy Policy</h2>
+
+<p><strong>Shanhai Sport (“the App”) respects and protects your privacy.</strong>
+The App is a single-player, offline game. It <strong>does not collect, upload, or share
+any personal information</strong> — your progress, location and identity keys stay on
+your device, and we (the developer) cannot see them.</p>
+
+<div class="note">
+  <strong>In short:</strong> the App has no account system, no server, and no analytics,
+  advertising, or crash-reporting SDK. It makes <strong>no network requests whatsoever</strong>
+  while running. The only thing that leaves your device is an in-app purchase payment,
+  which Apple and its billing systems handle; we never receive your payment details.
+</div>
+
+<h2>What we collect</h2>
+
+<p><strong>We collect nothing, and we have no ability to.</strong> Below is the data the
+App handles <em>on your device</em>, and why it never leaves:</p>
+
+<table>
+  <thead>
+    <tr><th style="width:26%">Data</th><th style="width:16%">Handling</th><th>Why it stays local</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Game progress (essence, mileage, creatures, cards, codex, battle logs)</td>
+      <td><span class="tag local">On-device only</span></td>
+      <td>Saved as a JSON save file in the app’s sandbox Documents directory and <strong>never uploaded</strong>. Deleting the app removes it.</td>
+    </tr>
+    <tr>
+      <td>Device-generated player identity (Ed25519 key pair)</td>
+      <td><span class="tag local">On-device only</span></td>
+      <td>The private key lives in the <strong>iOS Keychain</strong>, marked “this device only, available after first unlock,” so it <strong>is not included in iCloud backups</strong>. The public key travels with card data during <strong>direct peer-to-peer connections</strong> so the other device can verify signatures. The private key never leaves your device.</td>
+    </tr>
+    <tr>
+      <td>Device-generated identifier (16-digit random value)</td>
+      <td><span class="tag local">On-device only</span></td>
+      <td>Used only to seed the map and encounters. It is <strong>not</strong> an IDFA, IDFV, or advertising identifier, is not used for tracking, and never leaves the device.</td>
+    </tr>
+    <tr>
+      <td>Location, step count, barometric altitude</td>
+      <td><span class="tag device">System permission · memory</span></td>
+      <td>Provided by iOS with your permission and used <strong>only in memory</strong> for map projection, encounter tables, and position checks. <strong>Not written to the save file, not uploaded, not stored, and not used to make maps.</strong> See “Permissions” below.</td>
+    </tr>
+    <tr>
+      <td>In-app purchase receipts</td>
+      <td><span class="tag device">Apple billing</span></td>
+      <td>Handled by Apple’s StoreKit. The App reads a single boolean — “is this unlocked?” — and cross-checks it with the App Store. It never touches your payment method, name, or billing address, and we never see your order.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Because we collect nothing, <strong>there is no data for us to use, analyse, share, or sell</strong>,
+and nothing is disclosed to third parties.</p>
+
+<h2>Permissions</h2>
+
+<p>The App requests only the following permissions, and <strong>each permission prompt states
+that the data is used on your device only and is never uploaded</strong>:</p>
+
+<table>
+  <thead><tr><th style="width:34%">Permission</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td>Location (while using the app)</td><td>Projects your position onto the map so the App knows which cell you are in and what is there.</td></tr>
+    <tr><td>Motion &amp; Fitness</td><td>Reads step count and barometric altitude to tell whether you are walking, running, or still — this drives essence gain and encounter checks.</td></tr>
+    <tr><td>Bluetooth</td><td>Connects <strong>directly to nearby devices you choose</strong> for sparring, creature exchange, and community witnessing. No server is involved.</td></tr>
+    <tr><td>Local Network</td><td>Discovers and connects directly to nearby devices you choose. Connections are <strong>peer-to-peer and never pass through our servers</strong>.</td></tr>
+  </tbody>
+</table>
+
+<p>You can revoke any of these at any time in <strong>Settings → Privacy &amp; Security</strong>.
+The App still works afterwards; only the map, step, and peer-to-peer features become
+unavailable. The App does <strong>not</strong> request background location (there is
+no <code>UIBackgroundModes</code> <code>location</code> entry in its Info.plist) and does
+<strong>not</strong> access your contacts, photos, microphone, or camera. Location updates
+pause automatically when iOS determines you are stationary.</p>
+
+<h2>Peer-to-peer connections (Bluetooth / Local Network)</h2>
+
+<p>The “exchange creatures” and “community witnessing” features communicate <strong>directly
+between two devices</strong> over Bluetooth and the local network. These connections
+<strong>never pass through a server</strong>, so we cannot receive or see any exchanged data.</p>
+
+<p>Every connection is <strong>initiated by you and confirmed step by step</strong>: data is
+transmitted only after you choose which creature to send, the other device shows your public
+key and signature, and both sides confirm. What travels is card data, a public key, and a
+digital signature — <strong>never your location, identity documents, or contact details</strong>.</p>
+
+<p>The App does <strong>not</strong> enable Family Sharing: the in-app purchase is configured
+as not family-shareable in App Store Connect, so a purchase applies only to the buyer.</p>
+
+<h2>Storage and deletion</h2>
+
+<ul>
+  <li><strong>Saves</strong> (progress, battle logs) live in the app sandbox and are <strong>never uploaded</strong>. Delete the app, or use <strong>Settings → Clear Save</strong> inside the App.</li>
+  <li><strong>Battle archive</strong> can be cleared on its own: <strong>Vault → Battle Log → Clear</strong> (with confirmation).</li>
+  <li><strong>Witness ledger</strong> can be cleared on its own: <strong>Hall of the Great Man → Witness → Clear Records</strong> (with confirmation).</li>
+  <li><strong>The identity private key</strong> (Keychain) is <strong>deliberately not removed by “Clear Save”</strong> — it represents “this player on this device,” and removing it would break the signature chain of existing cards. It can only be cleared by <strong>deleting the app</strong> from system settings, which removes the Keychain entry with it.</li>
+  <li>Because we store nothing, <strong>uninstalling the app deletes all data</strong>. No separate request is needed.</li>
+</ul>
+
+<h2>In-app purchases</h2>
+
+<p>The App offers one <strong>one-time unlock (non-consumable)</strong> — no subscription,
+no auto-renewal, no recurring charge. All payments are processed by <strong>Apple</strong>
+through StoreKit; we never receive or store your payment details. The App includes a
+“Restore Purchases” option, in line with App Review Guideline 3.1.1.</p>
+
+<p>The unlock state is stored on your device as a boolean, as an <strong>offline cache</strong>,
+so the feature keeps working with no network. The App checks with the App Store at launch
+so your entitlement is restored automatically after a device change or reinstall.</p>
+
+<h2>Third-party services</h2>
+
+<p>The App contains <strong>no third-party SDKs</strong> and integrates no analytics,
+advertising, or crash-reporting services. The code depends solely on Apple system
+frameworks (Foundation, SwiftUI, Core Location, Core Motion, StoreKit, Metal). The only
+third party is <strong>Apple’s in-app purchase payment</strong>, whose privacy handling is
+covered by the <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.</p>
+
+<h2>Children’s privacy</h2>
+
+<p>The App collects no personal information, therefore it <strong>collects no personal data
+from children</strong> and does not knowingly gather any from them. If you are a guardian
+and want to limit purchases, use <a href="https://support.apple.com/en-us/HT204034">Apple
+Family Sharing</strong> or purchase restrictions in system settings.</p>
+
+<h2>Changes to this policy</h2>
+
+<p>If a future version changes how data is handled — <strong>especially if it adds network
+requests, data collection, or third-party SDKs</strong> — we will update this page and
+surface the change prominently in the App. <strong>The content of this page matches the
+App’s actual behaviour; if they ever disagree, the App’s actual behaviour governs, and
+please let us know.</strong></p>
+
+<h2>Contact</h2>
+
+<p>Questions, concerns, or a discrepancy between this policy and the App’s behaviour?</p>
+<ul>
+  <li>Email: <a href="mailto:issue@0x4ea.com">issue@0x4ea.com</a></li>
+  <li>Privacy policy page: <a href="https://0x4ea.com/shanhaiarenaprivacy.html">https://0x4ea.com/shanhaiarenaprivacy.html</a></li>
+</ul>
+
+<footer>
+  <p>运动山海（ShanhaiSport）· 隐私政策 / Privacy Policy · 生效日期 / Effective: 2026-10-05</p>
+</footer>
+
 </body>
 </html>
